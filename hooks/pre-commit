@@ -1,3 +1,64 @@
 #!/bin/bash
 
-exit 0
+formatter='stylish-haskell | brittany '
+tmp='.git/.tmp'
+
+function echo_note {
+  echo -e "\e[36m$1\e[0m"
+}
+
+function echo_err {
+  echo -e "\e[1;31m$1\e[0m"
+}
+
+exec < /dev/tty
+
+# check that there are no unstaged haskell files
+echo_note "Checking for unstaged haskell files"
+git status --porcelain | grep -E "^( M|MM|\?\?).*\.hs"
+if [ $? -eq 0 ]
+then
+  echo_err \
+    "Aborting commit: stage all haskell files before running pre-commit tests"
+  exit 1
+fi
+
+# check that all haskell files are formatted
+echo_note 'Checking the formatting of your haskell files'
+for l in **/*.hs
+do
+  echo "checking $l"
+  eval "cat $l | $formatter > $tmp"
+  diff --color $l $tmp
+  if [ $? -ne 0 ]
+  then
+    echo    "It looks like $l in not properly formatted."
+    echo -n 'Run the autoformatter? [Y/n] '
+    read
+    if ! [[ "$REPLY" =~ ^[nN] ]]
+    then
+      mv $tmp $l
+      git add $l
+    else
+      rm $tmp
+      echo_err 'Aborting commit: improperly formatted file.'
+      exit 1
+    fi
+  fi
+done
+
+# run tests
+echo_note "Running property tests"
+unbuffer cabal new-test --test-show-details=direct | tee $tmp
+grep -q "Failed!" < $tmp
+if [ $? -eq 0 ]
+then
+  echo_err "Aborting commit: tests failed"
+  rm $tmp
+  exit 1
+fi
+rm $tmp
+
+# attempt to compile main executable
+echo_note "Checking that main compiles"
+cabal build
