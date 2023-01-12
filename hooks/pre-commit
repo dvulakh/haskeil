@@ -66,6 +66,9 @@ do
   mv $l .
   git add *.html
 done
+printf "# Haskeil\n## Coverage\n" > README.md
+hooks/coverage.pl < hpc_index.html >> README.md
+git add README.md
 
 # attempt to compile main executable
 echo_note "Checking that main compiles"
