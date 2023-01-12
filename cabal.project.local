@@ -1,0 +1,3 @@
+package *
+  coverage: True
+  library-coverage: True

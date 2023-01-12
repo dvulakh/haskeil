@@ -46,7 +46,6 @@ maintainer:         david@vulakh.us
 
 test-suite haskeil-tests
   type:             exitcode-stdio-1.0
-  coverage:         True
   hs-source-dirs:   app
   main-is:          Tests.hs
   other-modules:    Hebrew
@@ -66,14 +65,9 @@ test-suite haskeil-tests
                     -Wpartial-fields
                     -Wcpp-undef
 
-executable haskeil
+library
   hs-source-dirs:   app
-  main-is:          Main.hs
-  other-modules:    Hebrew
-
-  -- LANGUAGE extensions used by modules in this package.
-  -- other-extensions:
-
+  exposed-modules:  Hebrew
   build-depends:    base ^>=4.17.0.0, generic-arbitrary
   default-language: Haskell2010
   ghc-options:      -fconstraint-solver-iterations=0
@@ -90,3 +84,28 @@ executable haskeil
                     -Wpartial-fields
                     -Wcpp-undef
                     -Werror
+
+--executable haskeil
+  --hs-source-dirs:   app
+  --main-is:          Main.hs
+  --other-modules:    Hebrew
+
+   --LANGUAGE extensions used by modules in this package.
+   --other-extensions:
+
+  --build-depends:    base ^>=4.17.0.0, generic-arbitrary
+  --default-language: Haskell2010
+  --ghc-options:      -fconstraint-solver-iterations=0
+                    ---O2
+                    ---Wall
+                    ---Wincomplete-uni-patterns
+                    ---Wincomplete-record-updates
+                    ---Wmonomorphism-restriction
+                    ---Wmissing-local-signatures
+                    ---Wmissing-exported-signatures
+                    ---Wmissing-home-modules
+                    ---Widentities
+                    ---Wredundant-constraints
+                    ---Wpartial-fields
+                    ---Wcpp-undef
+                    ---Werror

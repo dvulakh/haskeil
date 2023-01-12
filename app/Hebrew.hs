@@ -2,6 +2,7 @@
 {-# LANGUAGE DerivingStrategies #-}
 {-# LANGUAGE DerivingVia        #-}
 {-# LANGUAGE InstanceSigs       #-}
+{-# LANGUAGE TupleSections      #-}
 
 module Hebrew where
 
@@ -160,13 +161,16 @@ type HFWord = [HFLetter]
 
 
 instance Pretty a => Pretty [a] where
-  prettyShow     = (>>= prettyShow)
-  prettyReadPrec = pure . prettyReadPrec' id
+  prettyShow :: [a] -> String
+  prettyShow = (>>= prettyShow)
+  prettyReadPrec :: String -> Maybe ([a], String)
+  prettyReadPrec = Just . prettyReadPrec'
    where
-    prettyReadPrec' :: Pretty a => ([a] -> [a]) -> String -> ([a], String)
-    prettyReadPrec' l s =
-      fromMaybe (l [], s)
-        $   uncurry (prettyReadPrec' . (l .) . (:))
+    prettyReadPrec' :: Pretty a => String -> ([a], String)
+    prettyReadPrec' s =
+      fromMaybe ([], s)
+        $   uncurry ($)
+        <$> bimap (first . (:)) prettyReadPrec'
         <$> prettyReadPrec s
 
 
@@ -178,8 +182,10 @@ finalize Pay     = FFPay
 finalize Tzadi   = FFTzadi
 finalize fletter = toFinal fletter
 
+
 toFinal :: HLetter -> HFLetter
 toFinal = toEnum . fromEnum
+
 
 ofFinal :: HFLetter -> HLetter
 ofFinal FFChaf  = Chaf

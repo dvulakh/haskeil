@@ -1,4 +1,6 @@
 module Main where
 
+import           Hebrew
+
 main :: IO ()
-main = putStrLn "Hello, Haskell!"
+main = putStrLn $ show $ (prettyRead "שלם" :: HFWord)
