@@ -59,6 +59,14 @@ then
 fi
 rm $tmp
 
+# copy coverage report
+shopt -s globstar
+for l in `ls **/haskeil-tests/hpc_index*html`
+do
+  mv $l .
+  git add *.html
+done
+
 # attempt to compile main executable
 echo_note "Checking that main compiles"
 cabal build
