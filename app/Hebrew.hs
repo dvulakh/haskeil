@@ -2,7 +2,6 @@
 {-# LANGUAGE DerivingStrategies #-}
 {-# LANGUAGE DerivingVia        #-}
 {-# LANGUAGE InstanceSigs       #-}
-{-# LANGUAGE TupleSections      #-}
 
 module Hebrew where
 
