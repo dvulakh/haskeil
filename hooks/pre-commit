@@ -61,7 +61,7 @@ rm $tmp
 
 # copy coverage report
 shopt -s globstar
-for l in `ls **/haskeil-tests/hpc_index*html`
+for l in `ls **/haskeil-tests/*.html`
 do
   mv $l .
   git add *.html
