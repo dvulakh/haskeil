@@ -63,11 +63,11 @@ rm $tmp
 shopt -s globstar
 for l in `ls **/haskeil-tests/*.html`
 do
-  mv $l .
-  git add *.html
+  mv $l coverage/
 done
+git add coverage/*.html
 printf "# Haskeil\n## Coverage\n" > README.md
-hooks/coverage.pl < hpc_index.html >> README.md
+hooks/coverage.pl < coverage/hpc_index.html >> README.md
 git add README.md
 
 # attempt to compile main executable
