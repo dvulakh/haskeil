@@ -50,7 +50,7 @@ test-suite haskeil-tests
   main-is:          Tests.hs
   other-modules:    Hebrew
   default-language: Haskell2010
-  build-depends:    base ^>=4.17.0.0, QuickCheck, HUnit, test-framework, Cabal, test-framework-hunit, test-framework-quickcheck2, generic-arbitrary
+  build-depends:    base, QuickCheck, HUnit, test-framework, Cabal, test-framework-hunit, test-framework-quickcheck2, generic-arbitrary
   ghc-options:      -fconstraint-solver-iterations=0
                     -O2
                     -Wall
@@ -68,7 +68,7 @@ test-suite haskeil-tests
 library
   hs-source-dirs:   app
   exposed-modules:  Hebrew
-  build-depends:    base ^>=4.17.0.0, generic-arbitrary
+  build-depends:    base, generic-arbitrary
   default-language: Haskell2010
   ghc-options:      -fconstraint-solver-iterations=0
                     -O2
