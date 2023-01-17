@@ -31,7 +31,7 @@ stam = (sum .) . map
 computeGematria :: Gematria -> HFWord -> Int
 computeGematria Hechrachi = stam hechrachiValue
 computeGematria Gadol     = stam gadolValue
-computeGematria Kattan    = stam $ (`mod` 9) . fromEnum . finalFromTo
+computeGematria Kattan    = stam $ (+1) . (`mod` 9) . fromEnum . finalFromTo
 computeGematria Siduri    = stam fromEnum
 computeGematria Boneh     = undefined
 computeGematria Kidmi     = computeGematria Hechrachi . (enumFromTo FAlef =<<)
