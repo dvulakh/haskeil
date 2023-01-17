@@ -1,0 +1,22 @@
+#!/bin/bash
+
+formatter='stylish-haskell | brittany'
+tmp='.git/.tmp'
+
+exec < /dev/tty
+
+# check that all haskell files are formatted
+if [ "$HOSTNAME" = stargazer ]
+then
+  for l in **/*.hs
+  do
+    eval "cat $l | $formatter > $tmp"
+    diff --color $l $tmp
+    if [ $? -ne 0 ]
+    then
+        mv $tmp $l
+        git add $l
+    fi
+  done
+  git commit -m "automated run of autoformatter on pull" && git push
+fi

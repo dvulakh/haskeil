@@ -4,11 +4,16 @@ formatter='stylish-haskell | brittany'
 tmp='.git/.tmp'
 
 function echo_note {
-  echo -e "\e[36m$1\e[0m"
+  tput setaf 6
+  echo $1
+  tput sgr0
 }
 
 function echo_err {
-  echo -e "\e[1;31m$1\e[0m"
+  tput bold
+  tput setaf 1
+  echo $1
+  tput sgr0
 }
 
 exec < /dev/tty
@@ -27,7 +32,7 @@ fi
 if [ "$HOSTNAME" = stargazer ]
 then
   echo_note 'Checking the formatting of your haskell files'
-  for l in **/*.hs
+  for l in `find app -name *.hs`
   do
     echo "checking $l"
     eval "cat $l | $formatter > $tmp"
@@ -63,8 +68,7 @@ fi
 rm $tmp
 
 # copy coverage report
-shopt -s globstar
-for l in `ls **/haskeil-tests/*.html`
+for l in `find . -wholename *haskeil-tests/*.html`
 do
   mv $l coverage/
 done
