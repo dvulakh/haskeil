@@ -51,7 +51,7 @@ instance Pretty HLetter where
   prettyShow :: HLetter -> String
   prettyShow = prettyShow . toFinal
   prettyReadPrec :: String -> Maybe (HLetter, String)
-  prettyReadPrec s = first ofFinal <$> prettyReadPrec s
+  prettyReadPrec s = first fromFinal <$> prettyReadPrec s
 
 
 data HFLetter = FAlef
@@ -186,10 +186,49 @@ toFinal :: HLetter -> HFLetter
 toFinal = toEnum . fromEnum
 
 
-ofFinal :: HFLetter -> HLetter
-ofFinal FFChaf  = Chaf
-ofFinal FFMem   = Mem
-ofFinal FFNun   = Nun
-ofFinal FFPay   = Pay
-ofFinal FFTzadi = Tzadi
-ofFinal fletter = toEnum $ fromEnum fletter
+fromFinal :: HFLetter -> HLetter
+fromFinal FFChaf  = Chaf
+fromFinal FFMem   = Mem
+fromFinal FFNun   = Nun
+fromFinal FFPay   = Pay
+fromFinal FFTzadi = Tzadi
+fromFinal fletter = toEnum $ fromEnum fletter
+
+
+numberSpelling :: Int -> HFWord
+numberSpelling 1  = prettyRead "אחד"
+numberSpelling 2  = prettyRead "שתים"
+numberSpelling 3  = prettyRead "שלש"
+numberSpelling 4  = prettyRead "ארבע"
+numberSpelling 5  = prettyRead "חמש"
+numberSpelling 6  = prettyRead "שש"
+numberSpelling 7  = prettyRead "שבע"
+numberSpelling 8  = prettyRead "שמונה"
+numberSpelling 9  = prettyRead "תשע"
+numberSpelling 0  = prettyRead "אפס"
+numberSpelling n = numberSpelling (n `div` 10) ++ numberSpelling (n `mod` 10)
+
+letterSpelling :: HFLetter -> HFWord
+letterSpelling h = prettyRead $ case fromFinal h of
+     Alef    -> "אלף"
+     Bet    -> "בית"
+     Gimel    -> "גמל"
+     Dalet    -> "דלת"
+     Hey    -> "הא"
+     Vav    -> "ויו"
+     Zayin    -> "זין"
+     Chet    -> "חית"
+     Tet    -> "טית"
+     Yod    -> "יוד"
+     Chaf    -> "כף"
+     Lamed    -> "למד"
+     Mem    -> "מים"
+     Nun    -> "נון"
+     Samech    -> "סמך"
+     Ayin    -> "עין"
+     Pay    -> "פי"
+     Tzadi    -> "צדי"
+     Kuf    -> "קוף"
+     Reish    -> "ריש"
+     Shin    -> "שין"
+     Tav    -> "תיו"
