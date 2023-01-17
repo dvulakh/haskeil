@@ -100,7 +100,7 @@ span.spaces    { background: white }
 <span class="lineno">   81 </span>              | FFNun
 <span class="lineno">   82 </span>              | FFPay
 <span class="lineno">   83 </span>              | FFTzadi
-<span class="lineno">   84 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff">Eq</span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Ord</span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff">Show</span></span>)
+<span class="lineno">   84 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="istickedoff">Eq</span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Ord</span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff">Show</span></span>)
 <span class="lineno">   85 </span>
 <span class="lineno">   86 </span>
 <span class="lineno">   87 </span>instance Pretty HFLetter where
@@ -127,7 +127,7 @@ span.spaces    { background: white }
 <span class="lineno">  108 </span><span class="spaces"></span><span class="istickedoff">toChar FChaf   = 'כ'</span>
 <span class="lineno">  109 </span><span class="spaces"></span><span class="istickedoff">toChar FLamed  = 'ל'</span>
 <span class="lineno">  110 </span><span class="spaces"></span><span class="istickedoff">toChar FMem    = 'מ'</span>
-<span class="lineno">  111 </span><span class="spaces"></span><span class="istickedoff">toChar FNun    = <span class="nottickedoff">'נ'</span></span>
+<span class="lineno">  111 </span><span class="spaces"></span><span class="istickedoff">toChar FNun    = 'נ'</span>
 <span class="lineno">  112 </span><span class="spaces"></span><span class="istickedoff">toChar FSamech = 'ס'</span>
 <span class="lineno">  113 </span><span class="spaces"></span><span class="istickedoff">toChar FAyin   = 'ע'</span>
 <span class="lineno">  114 </span><span class="spaces"></span><span class="istickedoff">toChar FPay    = 'פ'</span>
@@ -157,7 +157,7 @@ span.spaces    { background: white }
 <span class="lineno">  138 </span><span class="spaces"></span><span class="istickedoff">ofChar 'כ' = Just FChaf</span>
 <span class="lineno">  139 </span><span class="spaces"></span><span class="istickedoff">ofChar 'ל' = Just FLamed</span>
 <span class="lineno">  140 </span><span class="spaces"></span><span class="istickedoff">ofChar 'מ' = Just FMem</span>
-<span class="lineno">  141 </span><span class="spaces"></span><span class="istickedoff">ofChar 'נ' = <span class="nottickedoff">Just FNun</span></span>
+<span class="lineno">  141 </span><span class="spaces"></span><span class="istickedoff">ofChar 'נ' = Just FNun</span>
 <span class="lineno">  142 </span><span class="spaces"></span><span class="istickedoff">ofChar 'ס' = Just FSamech</span>
 <span class="lineno">  143 </span><span class="spaces"></span><span class="istickedoff">ofChar 'ע' = Just FAyin</span>
 <span class="lineno">  144 </span><span class="spaces"></span><span class="istickedoff">ofChar 'פ' = Just FPay</span>
@@ -231,29 +231,29 @@ span.spaces    { background: white }
 <span class="lineno">  212 </span><span class="spaces"></span><span class="nottickedoff">numberSpelling n = numberSpelling (n `div` 10) ++ numberSpelling (n `mod` 10)</span></span>
 <span class="lineno">  213 </span>
 <span class="lineno">  214 </span>letterSpelling :: HFLetter -&gt; HFWord
-<span class="lineno">  215 </span><span class="decl"><span class="nottickedoff">letterSpelling h = prettyRead $ case fromFinal h of</span>
-<span class="lineno">  216 </span><span class="spaces">  </span><span class="nottickedoff">Alef   -&gt; &quot;אלף&quot;</span>
-<span class="lineno">  217 </span><span class="spaces">  </span><span class="nottickedoff">Bet    -&gt; &quot;בית&quot;</span>
-<span class="lineno">  218 </span><span class="spaces">  </span><span class="nottickedoff">Gimel  -&gt; &quot;גמל&quot;</span>
-<span class="lineno">  219 </span><span class="spaces">  </span><span class="nottickedoff">Dalet  -&gt; &quot;דלת&quot;</span>
-<span class="lineno">  220 </span><span class="spaces">  </span><span class="nottickedoff">Hey    -&gt; &quot;הא&quot;</span>
-<span class="lineno">  221 </span><span class="spaces">  </span><span class="nottickedoff">Vav    -&gt; &quot;ויו&quot;</span>
-<span class="lineno">  222 </span><span class="spaces">  </span><span class="nottickedoff">Zayin  -&gt; &quot;זין&quot;</span>
-<span class="lineno">  223 </span><span class="spaces">  </span><span class="nottickedoff">Chet   -&gt; &quot;חית&quot;</span>
-<span class="lineno">  224 </span><span class="spaces">  </span><span class="nottickedoff">Tet    -&gt; &quot;טית&quot;</span>
-<span class="lineno">  225 </span><span class="spaces">  </span><span class="nottickedoff">Yod    -&gt; &quot;יוד&quot;</span>
-<span class="lineno">  226 </span><span class="spaces">  </span><span class="nottickedoff">Chaf   -&gt; &quot;כף&quot;</span>
-<span class="lineno">  227 </span><span class="spaces">  </span><span class="nottickedoff">Lamed  -&gt; &quot;למד&quot;</span>
-<span class="lineno">  228 </span><span class="spaces">  </span><span class="nottickedoff">Mem    -&gt; &quot;מים&quot;</span>
-<span class="lineno">  229 </span><span class="spaces">  </span><span class="nottickedoff">Nun    -&gt; &quot;נון&quot;</span>
-<span class="lineno">  230 </span><span class="spaces">  </span><span class="nottickedoff">Samech -&gt; &quot;סמך&quot;</span>
-<span class="lineno">  231 </span><span class="spaces">  </span><span class="nottickedoff">Ayin   -&gt; &quot;עין&quot;</span>
-<span class="lineno">  232 </span><span class="spaces">  </span><span class="nottickedoff">Pay    -&gt; &quot;פי&quot;</span>
-<span class="lineno">  233 </span><span class="spaces">  </span><span class="nottickedoff">Tzadi  -&gt; &quot;צדי&quot;</span>
-<span class="lineno">  234 </span><span class="spaces">  </span><span class="nottickedoff">Kuf    -&gt; &quot;קוף&quot;</span>
-<span class="lineno">  235 </span><span class="spaces">  </span><span class="nottickedoff">Reish  -&gt; &quot;ריש&quot;</span>
-<span class="lineno">  236 </span><span class="spaces">  </span><span class="nottickedoff">Shin   -&gt; &quot;שין&quot;</span>
-<span class="lineno">  237 </span><span class="spaces">  </span><span class="nottickedoff">Tav    -&gt; &quot;תיו&quot;</span></span>
+<span class="lineno">  215 </span><span class="decl"><span class="istickedoff">letterSpelling h = prettyRead $ case fromFinal h of</span>
+<span class="lineno">  216 </span><span class="spaces">  </span><span class="istickedoff">Alef   -&gt; <span class="nottickedoff">&quot;אלף&quot;</span></span>
+<span class="lineno">  217 </span><span class="spaces">  </span><span class="istickedoff">Bet    -&gt; &quot;בית&quot;</span>
+<span class="lineno">  218 </span><span class="spaces">  </span><span class="istickedoff">Gimel  -&gt; &quot;גמל&quot;</span>
+<span class="lineno">  219 </span><span class="spaces">  </span><span class="istickedoff">Dalet  -&gt; &quot;דלת&quot;</span>
+<span class="lineno">  220 </span><span class="spaces">  </span><span class="istickedoff">Hey    -&gt; <span class="nottickedoff">&quot;הא&quot;</span></span>
+<span class="lineno">  221 </span><span class="spaces">  </span><span class="istickedoff">Vav    -&gt; <span class="nottickedoff">&quot;ויו&quot;</span></span>
+<span class="lineno">  222 </span><span class="spaces">  </span><span class="istickedoff">Zayin  -&gt; <span class="nottickedoff">&quot;זין&quot;</span></span>
+<span class="lineno">  223 </span><span class="spaces">  </span><span class="istickedoff">Chet   -&gt; <span class="nottickedoff">&quot;חית&quot;</span></span>
+<span class="lineno">  224 </span><span class="spaces">  </span><span class="istickedoff">Tet    -&gt; <span class="nottickedoff">&quot;טית&quot;</span></span>
+<span class="lineno">  225 </span><span class="spaces">  </span><span class="istickedoff">Yod    -&gt; <span class="nottickedoff">&quot;יוד&quot;</span></span>
+<span class="lineno">  226 </span><span class="spaces">  </span><span class="istickedoff">Chaf   -&gt; <span class="nottickedoff">&quot;כף&quot;</span></span>
+<span class="lineno">  227 </span><span class="spaces">  </span><span class="istickedoff">Lamed  -&gt; <span class="nottickedoff">&quot;למד&quot;</span></span>
+<span class="lineno">  228 </span><span class="spaces">  </span><span class="istickedoff">Mem    -&gt; <span class="nottickedoff">&quot;מים&quot;</span></span>
+<span class="lineno">  229 </span><span class="spaces">  </span><span class="istickedoff">Nun    -&gt; <span class="nottickedoff">&quot;נון&quot;</span></span>
+<span class="lineno">  230 </span><span class="spaces">  </span><span class="istickedoff">Samech -&gt; <span class="nottickedoff">&quot;סמך&quot;</span></span>
+<span class="lineno">  231 </span><span class="spaces">  </span><span class="istickedoff">Ayin   -&gt; <span class="nottickedoff">&quot;עין&quot;</span></span>
+<span class="lineno">  232 </span><span class="spaces">  </span><span class="istickedoff">Pay    -&gt; <span class="nottickedoff">&quot;פי&quot;</span></span>
+<span class="lineno">  233 </span><span class="spaces">  </span><span class="istickedoff">Tzadi  -&gt; <span class="nottickedoff">&quot;צדי&quot;</span></span>
+<span class="lineno">  234 </span><span class="spaces">  </span><span class="istickedoff">Kuf    -&gt; <span class="nottickedoff">&quot;קוף&quot;</span></span>
+<span class="lineno">  235 </span><span class="spaces">  </span><span class="istickedoff">Reish  -&gt; <span class="nottickedoff">&quot;ריש&quot;</span></span>
+<span class="lineno">  236 </span><span class="spaces">  </span><span class="istickedoff">Shin   -&gt; <span class="nottickedoff">&quot;שין&quot;</span></span>
+<span class="lineno">  237 </span><span class="spaces">  </span><span class="istickedoff">Tav    -&gt; <span class="nottickedoff">&quot;תיו&quot;</span></span></span>
 
 </pre>
 </body>

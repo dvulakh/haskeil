@@ -28,7 +28,11 @@ tests =
                                         , testCase "Gematria siduri of בגד" test4
                                         , testCase "Gematria kidmi of בגד" test5
                                         , testCase "Gematria prati of בגד" test6
-                                        
+                                        , testCase "Gematria merubah of בגד" test7
+                                        , testCase "Gematria meshulash of בגד" test8
+                                        , testCase "Gematria akhor of בגד" test9
+                                        , testCase "Gematria bemilui of בגד" test10
+                                        , testCase "Gematria neelam of בגד" test11
                                           ]
   ]
 
