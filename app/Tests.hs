@@ -44,7 +44,7 @@ test2 :: IO()
 test2 = computeGematria Gadol (prettyRead "השם") @?= 905
 
 test3 :: IO()
-test3 = computeGematria Kattan (prettyRead "לבן") @?= 10
+test3 = computeGematria Kattan (prettyRead "בגד") @?= 9
 
 test4 :: IO()
 test4 = computeGematria Siduri (prettyRead "לבן") @?= 28
