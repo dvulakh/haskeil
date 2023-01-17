@@ -22,7 +22,7 @@ tests =
   ]
 
 ofFinalToFinal :: HLetter -> Bool
-ofFinalToFinal l = ofFinal (toFinal l) == l
+ofFinalToFinal l = fromFinal (toFinal l) == l
 
 readShow :: HLetter -> Bool
 readShow l = prettyRead (prettyShow l) == l
