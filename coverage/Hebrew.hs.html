@@ -178,18 +178,18 @@ span.spaces    { background: white }
 <span class="lineno">  159 </span>type HFWord = [HFLetter]
 <span class="lineno">  160 </span>
 <span class="lineno">  161 </span>
-<span class="lineno">  162 </span>instance <span class="decl"><span class="nottickedoff">Pretty a =&gt; Pretty [a]</span></span> where
+<span class="lineno">  162 </span>instance <span class="decl"><span class="istickedoff">Pretty a =&gt; Pretty [a]</span></span> where
 <span class="lineno">  163 </span>  prettyShow :: [a] -&gt; String
 <span class="lineno">  164 </span>  <span class="decl"><span class="nottickedoff">prettyShow = (&gt;&gt;= prettyShow)</span></span>
 <span class="lineno">  165 </span>  prettyReadPrec :: String -&gt; Maybe ([a], String)
-<span class="lineno">  166 </span>  <span class="decl"><span class="nottickedoff">prettyReadPrec = Just . prettyReadPrec'</span>
-<span class="lineno">  167 </span><span class="spaces">   </span><span class="nottickedoff">where</span>
-<span class="lineno">  168 </span><span class="spaces">    </span><span class="nottickedoff">prettyReadPrec' :: Pretty a =&gt; String -&gt; ([a], String)</span>
-<span class="lineno">  169 </span><span class="spaces">    </span><span class="nottickedoff">prettyReadPrec' s =</span>
-<span class="lineno">  170 </span><span class="spaces">      </span><span class="nottickedoff">fromMaybe ([], s)</span>
-<span class="lineno">  171 </span><span class="spaces">        </span><span class="nottickedoff">$   uncurry ($)</span>
-<span class="lineno">  172 </span><span class="spaces">        </span><span class="nottickedoff">&lt;$&gt; bimap (first . (:)) prettyReadPrec'</span>
-<span class="lineno">  173 </span><span class="spaces">        </span><span class="nottickedoff">&lt;$&gt; prettyReadPrec s</span></span>
+<span class="lineno">  166 </span>  <span class="decl"><span class="istickedoff">prettyReadPrec = Just . prettyReadPrec'</span>
+<span class="lineno">  167 </span><span class="spaces">   </span><span class="istickedoff">where</span>
+<span class="lineno">  168 </span><span class="spaces">    </span><span class="istickedoff">prettyReadPrec' :: Pretty a =&gt; String -&gt; ([a], String)</span>
+<span class="lineno">  169 </span><span class="spaces">    </span><span class="istickedoff">prettyReadPrec' s =</span>
+<span class="lineno">  170 </span><span class="spaces">      </span><span class="istickedoff">fromMaybe ([], s)</span>
+<span class="lineno">  171 </span><span class="spaces">        </span><span class="istickedoff">$   uncurry ($)</span>
+<span class="lineno">  172 </span><span class="spaces">        </span><span class="istickedoff">&lt;$&gt; bimap (first . (:)) prettyReadPrec'</span>
+<span class="lineno">  173 </span><span class="spaces">        </span><span class="istickedoff">&lt;$&gt; prettyReadPrec s</span></span>
 <span class="lineno">  174 </span>
 <span class="lineno">  175 </span>
 <span class="lineno">  176 </span>finalize :: HLetter -&gt; HFLetter

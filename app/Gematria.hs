@@ -20,7 +20,7 @@ data Gematria = Hechrachi
 
 gadolValue :: HFLetter -> Int
 gadolValue h = 10 ^ zeros * (digit + 1)
-  where (zeros, digit) = (fromEnum h - 1) `divMod` 9
+  where (zeros, digit) = fromEnum h `divMod` 9
 
 hechrachiValue :: HFLetter -> Int
 hechrachiValue = gadolValue . toFinal . fromFinal
@@ -31,7 +31,7 @@ stam = (sum .) . map
 computeGematria :: Gematria -> HFWord -> Int
 computeGematria Hechrachi = stam hechrachiValue
 computeGematria Gadol     = stam gadolValue
-computeGematria Kattan    = stam $ (`mod` 9) . (+ (-1)) . fromEnum
+computeGematria Kattan    = stam $ (`mod` 9) . fromEnum
 computeGematria Siduri    = stam fromEnum
 computeGematria Boneh     = undefined
 computeGematria Kidmi     = computeGematria Hechrachi . (enumFromTo FAlef =<<)
