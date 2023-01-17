@@ -215,7 +215,7 @@ letterSpelling :: HFLetter -> HFWord
 letterSpelling h = prettyRead $ case fromFinal h of
   Alef   -> "אלף"
   Bet    -> "בית"
-  Gimel  -> "גמל"
+  Gimel  -> "גימל"
   Dalet  -> "דלת"
   Hey    -> "הא"
   Vav    -> "ויו"
