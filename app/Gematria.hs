@@ -1,3 +1,5 @@
+module Gematria (Gematria(..), computeGematria) where
+
 import           Hebrew
 
 data Gematria = Hechrachi
@@ -23,16 +25,19 @@ gadolValue h = 10 ^ zeros * (digit + 1)
 hechrachiValue :: HFLetter -> Int
 hechrachiValue = gadolValue . toFinal . fromFinal
 
+stam :: (HFLetter -> Int) -> HFWord -> Int
+stam = (sum .) . map
+
 computeGematria :: Gematria -> HFWord -> Int
-computeGematria Hechrachi = sum . map hechrachiValue
-computeGematria Gadol     = sum . map gadolValue
-computeGematria Kattan    = sum . map ((`mod` 9) . (+ (-1)) . fromEnum)
-computeGematria Siduri    = sum . map fromEnum
+computeGematria Hechrachi = stam hechrachiValue
+computeGematria Gadol     = stam gadolValue
+computeGematria Kattan    = stam $ (`mod` 9) . (+ (-1)) . fromEnum
+computeGematria Siduri    = stam fromEnum
 computeGematria Boneh     = undefined
-computeGematria Kidmi = sum . map (\h -> sum $ map hechrachiValue [FAlef .. h])
-computeGematria Prati     = sum . map ((^ 2) . hechrachiValue)
-computeGematria Merubah   = (^ 2) . computeGematria Hechrachi
-computeGematria Meshulash = sum . map ((^ 3) . hechrachiValue)
+computeGematria Kidmi     = computeGematria Hechrachi . (enumFromTo FAlef =<<)
+computeGematria Prati     = stam $ (^ (2 :: Int)) . hechrachiValue
+computeGematria Merubah   = (^ (2 :: Int)) . computeGematria Hechrachi
+computeGematria Meshulash = stam $ (^ (3 :: Int)) . hechrachiValue
 computeGematria Akhor =
   sum . map (uncurry (*)) . zip [1 ..] . map hechrachiValue
 computeGematria Mispari = undefined
