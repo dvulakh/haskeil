@@ -73,4 +73,4 @@ test10 :: IO()
 test10 = computeGematria BeMilui (prettyRead "בגד") @?= 2+10+400+3+10+40+30+4+30+400
 
 test11 :: IO()
-test11 = computeGematria Neelam (prettyRead "בגד") @?= 10+400+40+30+30+400
+test11 = computeGematria Neelam (prettyRead "בגד") @?= 10+400+10+40+30+30+400
