@@ -194,6 +194,9 @@ fromFinal FFPay   = Pay
 fromFinal FFTzadi = Tzadi
 fromFinal fletter = toEnum $ fromEnum fletter
 
+finalFromTo :: HFLetter -> HFLetter
+finalFromTo = toFinal . fromFinal
+
 
 numberSpelling :: Int -> HFWord
 numberSpelling 1 = prettyRead "אחד"
