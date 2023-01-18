@@ -1,4 +1,9 @@
-import Hebrew (HWord, HFWord, HLetter (..), HFLetter (..), fromFinal)
+import           Hebrew                         ( HFLetter(..)
+                                                , HFWord
+                                                , HLetter(..)
+                                                , HWord
+                                                , fromFinal
+                                                )
 data Transformation = Atbash
                     | Albam
                     | Achbi
@@ -9,5 +14,5 @@ data Transformation = Atbash
 
 applyTransformation :: Transformation -> HFWord -> HFWord
 applyTransformation Atbash = undefined
-applyTransformation Albam = undefined
-applyTransformation _ = undefined
+applyTransformation Albam  = undefined
+applyTransformation _      = undefined

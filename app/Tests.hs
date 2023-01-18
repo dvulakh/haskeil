@@ -22,18 +22,20 @@ tests =
     [ testProperty "ofFinal . toFinal ≡ id"       ofFinalToFinal
     , testProperty "prettyRead . prettyShow ≡ id" readShow
     ]
-  , testGroup "Calculating Gematriyos" [  testCase "Gematria hechrachi of חי" test1
-                                        , testCase "Gematria gadol of השם" test2
-                                        , testCase "Gematria kattan of לבן" test3
-                                        , testCase "Gematria siduri of בגד" test4
-                                        , testCase "Gematria kidmi of בגד" test5
-                                        , testCase "Gematria prati of בגד" test6
-                                        , testCase "Gematria merubah of בגד" test7
-                                        , testCase "Gematria meshulash of בגד" test8
-                                        , testCase "Gematria akhor of בגד" test9
-                                        , testCase "Gematria bemilui of בגד" test10
-                                        , testCase "Gematria neelam of בגד" test11
-                                          ]
+  , testGroup
+    "Calculating Gematriyos"
+    [ testCase "Gematria hechrachi of חי"  test1
+    , testCase "Gematria gadol of השם"     test2
+    , testCase "Gematria kattan of לבן"    test3
+    , testCase "Gematria siduri of בגד"    test4
+    , testCase "Gematria kidmi of בגד"     test5
+    , testCase "Gematria prati of בגד"     test6
+    , testCase "Gematria merubah of בגד"   test7
+    , testCase "Gematria meshulash of בגד" test8
+    , testCase "Gematria akhor of בגד"     test9
+    , testCase "Gematria bemilui of בגד"   test10
+    , testCase "Gematria neelam of בגד"    test11
+    ]
   ]
 
 ofFinalToFinal :: HLetter -> Bool
@@ -45,32 +47,51 @@ readShow l = prettyRead (prettyShow l) == l
 test1 :: IO ()
 test1 = computeGematria Hechrachi (prettyRead "חי") @?= 18
 
-test2 :: IO()
+test2 :: IO ()
 test2 = computeGematria Gadol (prettyRead "השם") @?= 905
 
-test3 :: IO()
+test3 :: IO ()
 test3 = computeGematria Kattan (prettyRead "לבן") @?= 10
 
-test4 :: IO()
+test4 :: IO ()
 test4 = computeGematria Siduri (prettyRead "בגד") @?= 9
 
-test5 :: IO()
+test5 :: IO ()
 test5 = computeGematria Kidmi (prettyRead "בגד") @?= 19
 
-test6 :: IO()
+test6 :: IO ()
 test6 = computeGematria Prati (prettyRead "בגד") @?= 29
 
-test7 :: IO()
+test7 :: IO ()
 test7 = computeGematria Merubah (prettyRead "בגד") @?= 81
 
-test8 :: IO()
+test8 :: IO ()
 test8 = computeGematria Meshulash (prettyRead "בגד") @?= 99
 
-test9 :: IO()
+test9 :: IO ()
 test9 = computeGematria Akhor (prettyRead "בגד") @?= 20
 
-test10 :: IO()
-test10 = computeGematria BeMilui (prettyRead "בגד") @?= 2+10+400+3+10+40+30+4+30+400
+test10 :: IO ()
+test10 =
+  computeGematria BeMilui (prettyRead "בגד")
+    @?= 2
+    +   10
+    +   400
+    +   3
+    +   10
+    +   40
+    +   30
+    +   4
+    +   30
+    +   400
 
-test11 :: IO()
-test11 = computeGematria Neelam (prettyRead "בגד") @?= 10+400+10+40+30+30+400
+test11 :: IO ()
+test11 =
+  computeGematria Neelam (prettyRead "בגד")
+    @?= 10
+    +   400
+    +   10
+    +   40
+    +   30
+    +   30
+    +   400

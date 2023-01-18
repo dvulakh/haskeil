@@ -57,6 +57,7 @@ fi
 
 # run tests
 echo_note "Running property tests"
+rm `find . -name *.tix`
 unbuffer cabal new-test --test-show-details=direct | tee $tmp
 grep -q "Failed!" < $tmp
 if [ $? -eq 0 ]
