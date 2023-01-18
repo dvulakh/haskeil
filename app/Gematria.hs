@@ -43,11 +43,10 @@ computeGematria Kidmi     = computeGematria Hechrachi . (enumFromTo FAlef =<<)
 computeGematria Prati     = stam $ (^ (2 :: Int)) . hechrachiValue
 computeGematria Merubah   = (^ (2 :: Int)) . computeGematria Hechrachi
 computeGematria Meshulash = stam $ (^ (3 :: Int)) . hechrachiValue
-computeGematria Akhor =
-  sum . map (uncurry (*)) . zip [1 ..] . map hechrachiValue
-computeGematria Mispari = undefined
-computeGematria BeMilui = computeGematria Hechrachi . (letterSpelling =<<)
-computeGematria Neelam  = computeGematria Hechrachi . (spell =<<)
+computeGematria Akhor     = sum . zipWith (*) [1 ..] . map hechrachiValue
+computeGematria Mispari   = undefined
+computeGematria BeMilui   = computeGematria Hechrachi . (letterSpelling =<<)
+computeGematria Neelam    = computeGematria Hechrachi . (spell =<<)
   where spell h = filter (/= h) $ letterSpelling h
 computeGematria Misafi = undefined
 computeGematria Kolel  = undefined

@@ -62,14 +62,13 @@ span.spaces    { background: white }
 <span class="lineno">   43 </span><span class="spaces"></span><span class="istickedoff">computeGematria Prati     = stam $ (^ (2 :: Int)) . hechrachiValue</span>
 <span class="lineno">   44 </span><span class="spaces"></span><span class="istickedoff">computeGematria Merubah   = (^ (2 :: Int)) . computeGematria Hechrachi</span>
 <span class="lineno">   45 </span><span class="spaces"></span><span class="istickedoff">computeGematria Meshulash = stam $ (^ (3 :: Int)) . hechrachiValue</span>
-<span class="lineno">   46 </span><span class="spaces"></span><span class="istickedoff">computeGematria Akhor =</span>
-<span class="lineno">   47 </span><span class="spaces">  </span><span class="istickedoff">sum . map (uncurry (*)) . zip [1 ..] . map hechrachiValue</span>
-<span class="lineno">   48 </span><span class="spaces"></span><span class="istickedoff">computeGematria Mispari = <span class="nottickedoff">undefined</span></span>
-<span class="lineno">   49 </span><span class="spaces"></span><span class="istickedoff">computeGematria BeMilui = computeGematria Hechrachi . (letterSpelling =&lt;&lt;)</span>
-<span class="lineno">   50 </span><span class="spaces"></span><span class="istickedoff">computeGematria Neelam  = computeGematria Hechrachi . (spell =&lt;&lt;)</span>
-<span class="lineno">   51 </span><span class="spaces">  </span><span class="istickedoff">where spell h = filter (/= h) $ letterSpelling h</span>
-<span class="lineno">   52 </span><span class="spaces"></span><span class="istickedoff">computeGematria Misafi = <span class="nottickedoff">undefined</span></span>
-<span class="lineno">   53 </span><span class="spaces"></span><span class="istickedoff">computeGematria Kolel  = <span class="nottickedoff">undefined</span></span></span>
+<span class="lineno">   46 </span><span class="spaces"></span><span class="istickedoff">computeGematria Akhor     = sum . zipWith (*) [1 ..] . map hechrachiValue</span>
+<span class="lineno">   47 </span><span class="spaces"></span><span class="istickedoff">computeGematria Mispari   = <span class="nottickedoff">undefined</span></span>
+<span class="lineno">   48 </span><span class="spaces"></span><span class="istickedoff">computeGematria BeMilui   = computeGematria Hechrachi . (letterSpelling =&lt;&lt;)</span>
+<span class="lineno">   49 </span><span class="spaces"></span><span class="istickedoff">computeGematria Neelam    = computeGematria Hechrachi . (spell =&lt;&lt;)</span>
+<span class="lineno">   50 </span><span class="spaces">  </span><span class="istickedoff">where spell h = filter (/= h) $ letterSpelling h</span>
+<span class="lineno">   51 </span><span class="spaces"></span><span class="istickedoff">computeGematria Misafi = <span class="nottickedoff">undefined</span></span>
+<span class="lineno">   52 </span><span class="spaces"></span><span class="istickedoff">computeGematria Kolel  = <span class="nottickedoff">undefined</span></span></span>
 
 </pre>
 </body>

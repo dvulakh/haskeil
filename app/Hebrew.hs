@@ -1,13 +1,11 @@
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE DerivingStrategies #-}
-{-# LANGUAGE DerivingVia        #-}
-{-# LANGUAGE InstanceSigs       #-}
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE DerivingVia   #-}
+{-# LANGUAGE InstanceSigs  #-}
 
 module Hebrew where
 
 import           Data.Bifunctor
 import           Data.List
-import           Data.Maybe
 import           GHC.Generics                   ( Generic )
 import           Test.QuickCheck.Arbitrary.Generic
 
@@ -166,11 +164,10 @@ instance Pretty a => Pretty [a] where
   prettyReadPrec = Just . prettyReadPrec'
    where
     prettyReadPrec' :: Pretty a => String -> ([a], String)
-    prettyReadPrec' s =
-      fromMaybe ([], s)
-        $   uncurry ($)
-        <$> bimap (first . (:)) prettyReadPrec'
-        <$> prettyReadPrec s
+    prettyReadPrec' s = maybe
+      ([], s)
+      (uncurry ($) . bimap (first . (:)) prettyReadPrec')
+      (prettyReadPrec s)
 
 
 finalize :: HLetter -> HFLetter
@@ -210,6 +207,7 @@ numberSpelling 8 = prettyRead "שמונה"
 numberSpelling 9 = prettyRead "תשע"
 numberSpelling 0 = prettyRead "אפס"
 numberSpelling n = numberSpelling (n `div` 10) ++ numberSpelling (n `mod` 10)
+
 
 letterSpelling :: HFLetter -> HFWord
 letterSpelling h = prettyRead $ case fromFinal h of
