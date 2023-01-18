@@ -1,4 +1,4 @@
-module Gematria (Gematria(..), computeGematria) where
+module Gematria (Gematria(..), computeGematria, gadolValue, hechrachiValue) where
 
 import           Hebrew
 
@@ -23,7 +23,7 @@ gadolValue h = 10 ^ zeros * (digit + 1)
   where (zeros, digit) = fromEnum h `divMod` 9
 
 hechrachiValue :: HFLetter -> Int
-hechrachiValue = gadolValue . finalFromTo
+hechrachiValue = gadolValue . removeFinals
 
 stam :: (HFLetter -> Int) -> HFWord -> Int
 stam = (sum .) . map
@@ -31,7 +31,7 @@ stam = (sum .) . map
 computeGematria :: Gematria -> HFWord -> Int
 computeGematria Hechrachi = stam hechrachiValue
 computeGematria Gadol     = stam gadolValue
-computeGematria Kattan    = stam $ (+ 1) . (`mod` 9) . fromEnum . finalFromTo
+computeGematria Kattan    = stam $ (+ 1) . (`mod` 9) . fromEnum . removeFinals
 computeGematria Siduri    = stam $ (+ 1) . fromEnum
 computeGematria Boneh     = undefined
 computeGematria Kidmi     = computeGematria Hechrachi . (enumFromTo FAlef =<<)

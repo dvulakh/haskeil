@@ -17,7 +17,7 @@ span.spaces    { background: white }
 <span class="decl"><span class="nottickedoff">never executed</span> <span class="tickonlytrue">always true</span> <span class="tickonlyfalse">always false</span></span>
 </pre>
 <pre>
-<span class="lineno">    1 </span>module Gematria (Gematria(..), computeGematria) where
+<span class="lineno">    1 </span>module Gematria (Gematria(..), computeGematria, gadolValue, hechrachiValue) where
 <span class="lineno">    2 </span>
 <span class="lineno">    3 </span>import           Hebrew
 <span class="lineno">    4 </span>
@@ -42,7 +42,7 @@ span.spaces    { background: white }
 <span class="lineno">   23 </span><span class="spaces">  </span><span class="istickedoff">where (zeros, digit) = fromEnum h `divMod` 9</span></span>
 <span class="lineno">   24 </span>
 <span class="lineno">   25 </span>hechrachiValue :: HFLetter -&gt; Int
-<span class="lineno">   26 </span><span class="decl"><span class="istickedoff">hechrachiValue = gadolValue . finalFromTo</span></span>
+<span class="lineno">   26 </span><span class="decl"><span class="istickedoff">hechrachiValue = gadolValue . removeFinals</span></span>
 <span class="lineno">   27 </span>
 <span class="lineno">   28 </span>stam :: (HFLetter -&gt; Int) -&gt; HFWord -&gt; Int
 <span class="lineno">   29 </span><span class="decl"><span class="istickedoff">stam = (sum .) . map</span></span>
@@ -50,7 +50,7 @@ span.spaces    { background: white }
 <span class="lineno">   31 </span>computeGematria :: Gematria -&gt; HFWord -&gt; Int
 <span class="lineno">   32 </span><span class="decl"><span class="istickedoff">computeGematria Hechrachi = stam hechrachiValue</span>
 <span class="lineno">   33 </span><span class="spaces"></span><span class="istickedoff">computeGematria Gadol     = stam gadolValue</span>
-<span class="lineno">   34 </span><span class="spaces"></span><span class="istickedoff">computeGematria Kattan    = stam $ (+ 1) . (`mod` 9) . fromEnum . finalFromTo</span>
+<span class="lineno">   34 </span><span class="spaces"></span><span class="istickedoff">computeGematria Kattan    = stam $ (+ 1) . (`mod` 9) . fromEnum . removeFinals</span>
 <span class="lineno">   35 </span><span class="spaces"></span><span class="istickedoff">computeGematria Siduri    = stam $ (+ 1) . fromEnum</span>
 <span class="lineno">   36 </span><span class="spaces"></span><span class="istickedoff">computeGematria Boneh     = <span class="nottickedoff">undefined</span></span>
 <span class="lineno">   37 </span><span class="spaces"></span><span class="istickedoff">computeGematria Kidmi     = computeGematria Hechrachi . (enumFromTo FAlef =&lt;&lt;)</span>

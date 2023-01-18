@@ -42,7 +42,7 @@ data HLetter = Alef
              | Reish
              | Shin
              | Tav
-  deriving (Enum, Eq, Generic, Ord, Read, Show)
+  deriving (Bounded, Enum, Eq, Generic, Ord, Read, Show)
   deriving (Arbitrary)
     via GenericArbitrary HLetter
 
@@ -81,7 +81,7 @@ data HFLetter = FAlef
               | FFNun
               | FFPay
               | FFTzadi
-  deriving (Enum, Eq, Ord, Read, Show)
+  deriving (Bounded, Enum, Eq, Ord, Read, Show)
 
 
 instance Pretty HFLetter where
@@ -194,8 +194,8 @@ fromFinal FFPay   = Pay
 fromFinal FFTzadi = Tzadi
 fromFinal fletter = toEnum $ fromEnum fletter
 
-finalFromTo :: HFLetter -> HFLetter
-finalFromTo = toFinal . fromFinal
+removeFinals :: HFLetter -> HFLetter
+removeFinals = toFinal . fromFinal
 
 
 numberSpelling :: Int -> HFWord
@@ -235,3 +235,9 @@ letterSpelling h = prettyRead $ case fromFinal h of
   Reish  -> "ריש"
   Shin   -> "שין"
   Tav    -> "תיו"
+
+
+properWord :: HWord -> HFWord
+properWord w = case reverse w of
+      (h:hs) -> reverse $ finalize h:map toFinal hs
+      _ -> []

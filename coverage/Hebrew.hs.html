@@ -61,7 +61,7 @@ span.spaces    { background: white }
 <span class="lineno">   42 </span>             | Reish
 <span class="lineno">   43 </span>             | Shin
 <span class="lineno">   44 </span>             | Tav
-<span class="lineno">   45 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="istickedoff">Eq</span></span>, Generic, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Ord</span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff">Show</span></span>)
+<span class="lineno">   45 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="istickedoff">Eq</span></span>, Generic, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Ord</span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff">Show</span></span>)
 <span class="lineno">   46 </span>  deriving (<span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff">Arbitrary</span></span></span></span>)
 <span class="lineno">   47 </span>    via GenericArbitrary HLetter
 <span class="lineno">   48 </span>
@@ -100,7 +100,7 @@ span.spaces    { background: white }
 <span class="lineno">   81 </span>              | FFNun
 <span class="lineno">   82 </span>              | FFPay
 <span class="lineno">   83 </span>              | FFTzadi
-<span class="lineno">   84 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="istickedoff">Eq</span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Ord</span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff">Show</span></span>)
+<span class="lineno">   84 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="istickedoff">Eq</span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Ord</span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff">Show</span></span>)
 <span class="lineno">   85 </span>
 <span class="lineno">   86 </span>
 <span class="lineno">   87 </span>instance Pretty HFLetter where
@@ -125,7 +125,7 @@ span.spaces    { background: white }
 <span class="lineno">  106 </span><span class="spaces"></span><span class="istickedoff">toChar FTet    = 'ט'</span>
 <span class="lineno">  107 </span><span class="spaces"></span><span class="istickedoff">toChar FYod    = 'י'</span>
 <span class="lineno">  108 </span><span class="spaces"></span><span class="istickedoff">toChar FChaf   = 'כ'</span>
-<span class="lineno">  109 </span><span class="spaces"></span><span class="istickedoff">toChar FLamed  = 'ל'</span>
+<span class="lineno">  109 </span><span class="spaces"></span><span class="istickedoff">toChar FLamed  = <span class="nottickedoff">'ל'</span></span>
 <span class="lineno">  110 </span><span class="spaces"></span><span class="istickedoff">toChar FMem    = 'מ'</span>
 <span class="lineno">  111 </span><span class="spaces"></span><span class="istickedoff">toChar FNun    = 'נ'</span>
 <span class="lineno">  112 </span><span class="spaces"></span><span class="istickedoff">toChar FSamech = 'ס'</span>
@@ -213,8 +213,8 @@ span.spaces    { background: white }
 <span class="lineno">  194 </span><span class="spaces"></span><span class="istickedoff">fromFinal FFTzadi = <span class="nottickedoff">Tzadi</span></span>
 <span class="lineno">  195 </span><span class="spaces"></span><span class="istickedoff">fromFinal fletter = toEnum $ fromEnum fletter</span></span>
 <span class="lineno">  196 </span>
-<span class="lineno">  197 </span>finalFromTo :: HFLetter -&gt; HFLetter
-<span class="lineno">  198 </span><span class="decl"><span class="istickedoff">finalFromTo = toFinal . fromFinal</span></span>
+<span class="lineno">  197 </span>removeFinals :: HFLetter -&gt; HFLetter
+<span class="lineno">  198 </span><span class="decl"><span class="istickedoff">removeFinals = toFinal . fromFinal</span></span>
 <span class="lineno">  199 </span>
 <span class="lineno">  200 </span>
 <span class="lineno">  201 </span>numberSpelling :: Int -&gt; HFWord
@@ -254,6 +254,12 @@ span.spaces    { background: white }
 <span class="lineno">  235 </span><span class="spaces">  </span><span class="istickedoff">Reish  -&gt; <span class="nottickedoff">&quot;ריש&quot;</span></span>
 <span class="lineno">  236 </span><span class="spaces">  </span><span class="istickedoff">Shin   -&gt; <span class="nottickedoff">&quot;שין&quot;</span></span>
 <span class="lineno">  237 </span><span class="spaces">  </span><span class="istickedoff">Tav    -&gt; <span class="nottickedoff">&quot;תיו&quot;</span></span></span>
+<span class="lineno">  238 </span>
+<span class="lineno">  239 </span>
+<span class="lineno">  240 </span>properWord :: HWord -&gt; HFWord
+<span class="lineno">  241 </span><span class="decl"><span class="nottickedoff">properWord w = case reverse w of</span>
+<span class="lineno">  242 </span><span class="spaces">      </span><span class="nottickedoff">(h:hs) -&gt; reverse $ finalize h:map toFinal hs</span>
+<span class="lineno">  243 </span><span class="spaces">      </span><span class="nottickedoff">_ -&gt; []</span></span>
 
 </pre>
 </body>
