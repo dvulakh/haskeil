@@ -3,7 +3,7 @@ module Main where
 import           Gematria
 import           Hebrew
 
-import Transformation
+import           Transformation
 
 main :: IO ()
 main = do

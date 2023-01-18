@@ -61,12 +61,12 @@ span.spaces    { background: white }
 <span class="lineno">   42 </span>             | Reish
 <span class="lineno">   43 </span>             | Shin
 <span class="lineno">   44 </span>             | Tav
-<span class="lineno">   45 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="istickedoff">Eq</span></span>, Generic, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Ord</span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff">Show</span></span>)
+<span class="lineno">   45 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff">Generic</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Ord</span></span></span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
 <span class="lineno">   46 </span>  deriving (<span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff">Arbitrary</span></span></span></span>)
 <span class="lineno">   47 </span>    via GenericArbitrary HLetter
 <span class="lineno">   48 </span>
 <span class="lineno">   49 </span>
-<span class="lineno">   50 </span>instance Pretty HLetter where
+<span class="lineno">   50 </span>instance <span class="decl"><span class="istickedoff">Pretty HLetter</span></span> where
 <span class="lineno">   51 </span>  prettyShow :: HLetter -&gt; String
 <span class="lineno">   52 </span>  <span class="decl"><span class="istickedoff">prettyShow = prettyShow . toFinal</span></span>
 <span class="lineno">   53 </span>  prettyReadPrec :: String -&gt; Maybe (HLetter, String)
@@ -100,10 +100,10 @@ span.spaces    { background: white }
 <span class="lineno">   81 </span>              | FFNun
 <span class="lineno">   82 </span>              | FFPay
 <span class="lineno">   83 </span>              | FFTzadi
-<span class="lineno">   84 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="istickedoff">Eq</span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Ord</span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff">Show</span></span>)
+<span class="lineno">   84 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="istickedoff"><span class="decl"><span class="istickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Ord</span></span></span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
 <span class="lineno">   85 </span>
 <span class="lineno">   86 </span>
-<span class="lineno">   87 </span>instance Pretty HFLetter where
+<span class="lineno">   87 </span>instance <span class="decl"><span class="nottickedoff">Pretty HFLetter</span></span> where
 <span class="lineno">   88 </span>  prettyShow :: HFLetter -&gt; String
 <span class="lineno">   89 </span>  <span class="decl"><span class="istickedoff">prettyShow = pure . toChar</span></span>
 <span class="lineno">   90 </span>  prettyReadPrec :: String -&gt; Maybe (HFLetter, String)
@@ -125,7 +125,7 @@ span.spaces    { background: white }
 <span class="lineno">  106 </span><span class="spaces"></span><span class="istickedoff">toChar FTet    = 'ט'</span>
 <span class="lineno">  107 </span><span class="spaces"></span><span class="istickedoff">toChar FYod    = 'י'</span>
 <span class="lineno">  108 </span><span class="spaces"></span><span class="istickedoff">toChar FChaf   = 'כ'</span>
-<span class="lineno">  109 </span><span class="spaces"></span><span class="istickedoff">toChar FLamed  = <span class="nottickedoff">'ל'</span></span>
+<span class="lineno">  109 </span><span class="spaces"></span><span class="istickedoff">toChar FLamed  = 'ל'</span>
 <span class="lineno">  110 </span><span class="spaces"></span><span class="istickedoff">toChar FMem    = 'מ'</span>
 <span class="lineno">  111 </span><span class="spaces"></span><span class="istickedoff">toChar FNun    = 'נ'</span>
 <span class="lineno">  112 </span><span class="spaces"></span><span class="istickedoff">toChar FSamech = 'ס'</span>
@@ -178,7 +178,7 @@ span.spaces    { background: white }
 <span class="lineno">  159 </span>type HFWord = [HFLetter]
 <span class="lineno">  160 </span>
 <span class="lineno">  161 </span>
-<span class="lineno">  162 </span>instance Pretty a =&gt; Pretty [a] where
+<span class="lineno">  162 </span>instance <span class="decl"><span class="istickedoff">Pretty a =&gt; Pretty [a]</span></span> where
 <span class="lineno">  163 </span>  prettyShow :: [a] -&gt; String
 <span class="lineno">  164 </span>  <span class="decl"><span class="nottickedoff">prettyShow = (&gt;&gt;= prettyShow)</span></span>
 <span class="lineno">  165 </span>  prettyReadPrec :: String -&gt; Maybe ([a], String)
@@ -258,8 +258,8 @@ span.spaces    { background: white }
 <span class="lineno">  239 </span>
 <span class="lineno">  240 </span>properWord :: HWord -&gt; HFWord
 <span class="lineno">  241 </span><span class="decl"><span class="nottickedoff">properWord w = case reverse w of</span>
-<span class="lineno">  242 </span><span class="spaces">      </span><span class="nottickedoff">(h:hs) -&gt; reverse $ finalize h:map toFinal hs</span>
-<span class="lineno">  243 </span><span class="spaces">      </span><span class="nottickedoff">_ -&gt; []</span></span>
+<span class="lineno">  242 </span><span class="spaces">  </span><span class="nottickedoff">(h : hs) -&gt; reverse $ finalize h : map toFinal hs</span>
+<span class="lineno">  243 </span><span class="spaces">  </span><span class="nottickedoff">_        -&gt; []</span></span>
 
 </pre>
 </body>

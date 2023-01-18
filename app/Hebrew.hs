@@ -239,5 +239,5 @@ letterSpelling h = prettyRead $ case fromFinal h of
 
 properWord :: HWord -> HFWord
 properWord w = case reverse w of
-      (h:hs) -> reverse $ finalize h:map toFinal hs
-      _ -> []
+  (h : hs) -> reverse $ finalize h : map toFinal hs
+  _        -> []

@@ -1,4 +1,9 @@
-module Gematria (Gematria(..), computeGematria, gadolValue, hechrachiValue) where
+module Gematria
+  ( Gematria(..)
+  , computeGematria
+  , gadolValue
+  , hechrachiValue
+  ) where
 
 import           Hebrew
 
