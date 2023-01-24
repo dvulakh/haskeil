@@ -9,7 +9,7 @@ data Transformation = Aatat
                     | Ofanim
                     | AkhasBeta
                     | Avgad
-  deriving (Enum)
+  deriving (Enum, Bounded)
 
 maxLetter :: Int
 maxLetter = fromEnum (maxBound :: HLetter)
