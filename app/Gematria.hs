@@ -22,6 +22,7 @@ data Gematria = Hechrachi
               | Neelam
               | Misafi
               | Kolel
+              deriving (Enum, Bounded)
 
 gadolValue :: HFLetter -> Int
 gadolValue h = 10 ^ zeros * (digit + 1)

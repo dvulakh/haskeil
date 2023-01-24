@@ -1,18 +1,21 @@
 module Transformation (Transformation(..), applyTransformation) where
 import           Hebrew
 
-data Transformation = Atbash
+data Transformation = Aatat
+                    | Atbash
                     | Albam
                     | Achbi
                     | AyakBakar
                     | Ofanim
                     | AkhasBeta
                     | Avgad
+                    deriving (Enum)
 
 maxLetter :: Int
 maxLetter = fromEnum (maxBound :: HLetter)
 
 applyTransformation :: Transformation -> HFWord -> HFWord
+applyTransformation Aatat = id
 applyTransformation Atbash =
   map $ toEnum . ((maxLetter - 1) -) . fromEnum . fromFinal
 applyTransformation Albam =
