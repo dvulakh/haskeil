@@ -12,3 +12,5 @@ main = do
   print word
   print $ computeGematria Hechrachi $ applyTransformation AkhasBeta word
   print $ head $ oneHop (prettyRead "תריג") (prettyRead "גרתי")
+  print $ applyTransformation Albam (prettyRead "בראשית")
+  print $ fromEnum (minBound :: HLetter)

@@ -12,29 +12,32 @@ data Transformation = Aatat
                     | Avgad
   deriving (Bounded, Enum, Show)
 
+toHLetter :: Int -> HFLetter
+toHLetter = toEnum . (+ (-1))
+
 maxLetter :: Int
-maxLetter = fromEnum (maxBound :: HLetter)
+maxLetter = fromEnum (maxBound :: HLetter) + 1
 
 applyTransformation :: Transformation -> HFWord -> HFWord
 applyTransformation Aatat = id
 applyTransformation Atbash =
-  map $ toEnum . (maxLetter -) . fromEnum . fromFinal
+  map $ toHLetter . (maxLetter -) . fromEnum . fromFinal
 applyTransformation Albam =
   map
-    $ toEnum
+    $ toHLetter
     . (`mod` maxLetter)
     . (+ (maxLetter `div` 2))
-    . fromEnum
+    . (+1) . fromEnum
     . fromFinal
 applyTransformation Achbi = map $ \h ->
-  let (group, position) = fromEnum h `divMod` halfLetter
+  let (group, position) = (fromEnum h + 1) `divMod` halfLetter
   in  toEnum $ halfLetter * group + position
   where halfLetter = maxLetter `div` 2
-applyTransformation AyakBakar = map $ toEnum . (`mod` 999) . (* 10) . fromEnum
+applyTransformation AyakBakar = map $ toHLetter . (`mod` 999) . (* 10) . (+1) . fromEnum
 applyTransformation Ofanim    = map $ last . letterSpelling
 applyTransformation AkhasBeta = map $ \h -> case fromFinal h of
   Tav -> FTav
   _ ->
-    let (group, position) = fromEnum h `divMod` 7
+    let (group, position) = (fromEnum h + 1) `divMod` 7
     in  toEnum (7 * group + position)
 applyTransformation Avgad = map succ
