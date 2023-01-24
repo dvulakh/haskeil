@@ -2,7 +2,7 @@ module Main where
 
 import           Gematria
 import           Hebrew
-
+import           Search
 import           Transformation
 
 main :: IO ()
@@ -11,3 +11,4 @@ main = do
   putStrLn $ prettyShow word
   print word
   print $ computeGematria Hechrachi $ applyTransformation AkhasBeta word
+  print $ head $ oneHop (prettyRead "תריג") (prettyRead "גרתי")

@@ -1,6 +1,7 @@
 module Transformation (Transformation(..), applyTransformation) where
 import           Hebrew
 
+-- TODO: Test these!!
 data Transformation = Aatat
                     | Atbash
                     | Albam
@@ -9,7 +10,7 @@ data Transformation = Aatat
                     | Ofanim
                     | AkhasBeta
                     | Avgad
-  deriving (Bounded, Enum)
+  deriving (Bounded, Enum, Show)
 
 maxLetter :: Int
 maxLetter = fromEnum (maxBound :: HLetter)
@@ -17,7 +18,7 @@ maxLetter = fromEnum (maxBound :: HLetter)
 applyTransformation :: Transformation -> HFWord -> HFWord
 applyTransformation Aatat = id
 applyTransformation Atbash =
-  map $ toEnum . ((maxLetter - 1) -) . fromEnum . fromFinal
+  map $ toEnum . (maxLetter -) . fromEnum . fromFinal
 applyTransformation Albam =
   map
     $ toEnum

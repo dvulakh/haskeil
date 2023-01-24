@@ -6,7 +6,6 @@ import           Transformation
 
 import           Control.Applicative
 import           Data.Bifunctor
-import           Data.Maybe
 
 type Hop = (Gematria, Transformation)
 
@@ -17,10 +16,9 @@ applyHop :: Hop -> HFWord -> Int
 applyHop = uncurry (.) . bimap computeGematria applyTransformation
 
 oneHop :: HFWord -> HFWord -> [(Hop, Hop)]
-oneHop w1 w2 =
-  let gem1 = map (\h -> (h, applyHop h w1)) allHops
-  in  let gem2 = map (\h -> (h, applyHop h w2)) allHops
-      in  catMaybes $ liftA2
-            (\(h1, g1) (h2, g2) -> if g1 == g2 then Just (h1, h2) else Nothing)
-            gem1
-            gem2
+oneHop w1 w2 = do
+  h1 <- allHops
+  let g1 = applyHop h1 w1
+  h2 <- allHops
+  let g2 = applyHop h2 w2
+  [ (h1, h2) | g1 == g2 ]
