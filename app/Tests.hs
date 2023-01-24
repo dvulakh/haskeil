@@ -11,6 +11,7 @@ import           Test.HUnit                     ( (@?=) )
 
 import           Gematria
 import           Hebrew
+import Transformation
 
 main :: IO ()
 main = defaultMain tests
@@ -35,6 +36,21 @@ tests =
     , testCase "Gematria akhor of בגד"     test9
     , testCase "Gematria bemilui of בגד"   test10
     , testCase "Gematria neelam of בגד"    test11
+    ]
+  , testGroup
+    "Applying transformations"
+    [ testCase "Transformation atbash on בראשית" test12
+    , testCase "Transformation achbi on בראשית" test13
+    , testCase "Transformation avgad on בראשית" test14
+    , testCase "Transformation albam on בראשית" test15
+    , testCase "Transformation ofanim on בראשית" test16
+    , testCase "Transformation akhas beta on בראשית" test17
+    , testCase "Transformation atbash on דברים" test18
+    , testCase "Transformation achbi on דברים" test19
+    , testCase "Transformation avgad on דברים" test20
+    , testCase "Transformation albam on דברים" test21
+    , testCase "Transformation ofanim on דברים" test22
+    , testCase "Transformation akhas beta on דברים" test23
     ]
   ]
 
@@ -95,3 +111,39 @@ test11 =
     +   30
     +   30
     +   400
+
+test12 :: IO ()
+test12 = applyTransformation Atbash (prettyRead "בראשית") @?= prettyRead "שגתבמא"
+
+test13 :: IO ()
+test13 = applyTransformation Achbi (prettyRead "בראשית") @?= prettyRead "ינכמבל"
+
+test14 :: IO ()
+test14 = applyTransformation Avgad (prettyRead "בראשית") @?= prettyRead "גשבתכא"
+
+test15 :: IO ()
+test15 = applyTransformation Albam (prettyRead "בראשית") @?= prettyRead "מטלישכ"
+
+test16 :: IO ()
+test16 = applyTransformation Ofanim (prettyRead "בראשית") @?= prettyRead "תשפנדו"
+
+test17 :: IO ()
+test17 = applyTransformation AkhasBeta (prettyRead "בראשית") @?= prettyRead "טוחזפת"
+
+test18 :: IO ()
+test18 = applyTransformation Atbash (prettyRead "דברים") @?= prettyRead "קשגמי"
+
+test19 :: IO ()
+test19 = applyTransformation Achbi (prettyRead "דברים") @?= prettyRead "חינבש"
+
+test20 :: IO ()
+test20 = applyTransformation Avgad (prettyRead "דברים") @?= prettyRead "הגשכנ"
+
+test21 :: IO ()
+test21 = applyTransformation Albam (prettyRead "דברים") @?= prettyRead "סמטשב"
+
+test22 :: IO ()
+test22 = applyTransformation Ofanim (prettyRead "דברים") @?= prettyRead "תתשדמ"
+
+test23 :: IO ()
+test23 = applyTransformation AkhasBeta (prettyRead "דברים") @?= prettyRead "כטופר"
