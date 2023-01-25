@@ -66,6 +66,13 @@ then
   rm $tmp
   exit 1
 fi
+grep -q "tests: FAIL" < $tmp
+if [ $? -eq 0 ]
+then
+  echo_err "Aborting commit: tests failed"
+  rm $tmp
+  exit 1
+fi
 rm $tmp
 
 # copy coverage report
