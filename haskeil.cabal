@@ -48,9 +48,9 @@ test-suite haskeil-tests
   type:             exitcode-stdio-1.0
   hs-source-dirs:   app
   main-is:          Tests.hs
-  other-modules:    Hebrew,Gematria
+  other-modules:    Hebrew, Gematria, Transformation, Search
   default-language: Haskell2010
-  build-depends:    base, QuickCheck, HUnit, test-framework, Cabal, test-framework-hunit, test-framework-quickcheck2, generic-arbitrary
+  build-depends:    base, QuickCheck, HUnit, test-framework, Cabal, test-framework-hunit, test-framework-quickcheck2, generic-arbitrary, safe
   ghc-options:      -fconstraint-solver-iterations=0
                     -O2
                     -Wall
@@ -68,7 +68,7 @@ test-suite haskeil-tests
 library
   hs-source-dirs:   app
   exposed-modules:  Hebrew, Gematria, Transformation, Search
-  build-depends:    base, generic-arbitrary
+  build-depends:    base, generic-arbitrary, safe
   default-language: Haskell2010
   ghc-options:      -fconstraint-solver-iterations=0
                     -O2
@@ -89,7 +89,7 @@ executable haskeil
   hs-source-dirs:   app
   main-is:          Main.hs
   other-modules:    Hebrew, Gematria, Transformation, Search
-  build-depends:    base, generic-arbitrary
+  build-depends:    base, generic-arbitrary, safe
   default-language: Haskell2010
   ghc-options:      -fconstraint-solver-iterations=0
                     -O2

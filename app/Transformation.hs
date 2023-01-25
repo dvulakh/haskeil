@@ -1,5 +1,6 @@
 module Transformation (Transformation(..), applyTransformation) where
 import           Hebrew
+import           Safe
 
 -- TODO: Test these!!
 data Transformation = Aatat
@@ -44,4 +45,4 @@ applyTransformation AkhasBeta = map $ \h -> case fromFinal h of
   _ ->
     let (group, position) = (fromEnum h + 1) `divMod` 7
     in  toHFLetter (7 * group + position)
-applyTransformation Avgad = map succ
+applyTransformation Avgad = map succSafe
