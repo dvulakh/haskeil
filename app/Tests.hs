@@ -59,6 +59,7 @@ tests =
     , testCase "Transformation albam on all"         test29
     , testCase "Transformation ofanim on all"        test30
     , testCase "Transformation akhas beta on all"    test31
+    , testCase "Transformation ayak bakar on all"    test32
     ]
   ]
 
@@ -188,4 +189,7 @@ test30 = applyTransformation Ofanim (prettyRead "צ") @?= prettyRead "י"
 
 test31 :: IO ()
 test31 = applyTransformation AkhasBeta (prettyRead "צ") @?= prettyRead "ד"
+
+test32 :: IO ()
+test32 = applyTransformation AyakBakar (prettyRead "צ") @?= prettyRead "ץ"
 

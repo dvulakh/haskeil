@@ -13,4 +13,4 @@ main = do
   print $ computeGematria Hechrachi $ applyTransformation AkhasBeta word
   print $ head $ oneHop (prettyRead "תריג") (prettyRead "גרתי")
   print $ oneHop (prettyRead "משה") (prettyRead "השטן")
-  print $ oneHop (prettyRead "צ") (prettyRead "ישיבתאםאייטיי")
+  print $ oneHop (prettyRead "צ") (prettyRead "ה")

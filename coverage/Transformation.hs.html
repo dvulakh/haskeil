@@ -56,21 +56,25 @@ span.spaces    { background: white }
 <span class="lineno">   37 </span><span class="spaces">  </span><span class="istickedoff">in  toHFLetter $ halfLetter * group + (halfLetter - position)</span>
 <span class="lineno">   38 </span><span class="spaces">  </span><span class="istickedoff">where halfLetter = maxLetter `div` 2</span>
 <span class="lineno">   39 </span><span class="spaces"></span><span class="istickedoff">applyTransformation AyakBakar =</span>
-<span class="lineno">   40 </span><span class="spaces">  </span><span class="istickedoff">map $ toHFLetter . (`mod` 27) . (+ 10) . fromEnum</span>
-<span class="lineno">   41 </span><span class="spaces"></span><span class="istickedoff">applyTransformation Ofanim    = map $ removeFinals . last . letterSpelling</span>
-<span class="lineno">   42 </span><span class="spaces"></span><span class="istickedoff">applyTransformation AkhasBeta = map $ \h -&gt; case fromFinal h of</span>
-<span class="lineno">   43 </span><span class="spaces">  </span><span class="istickedoff">Tav -&gt; FTav</span>
-<span class="lineno">   44 </span><span class="spaces">  </span><span class="istickedoff">_ -&gt;</span>
-<span class="lineno">   45 </span><span class="spaces">    </span><span class="istickedoff">let (group, position) = fromEnum (fromFinal h) `divMod` 7</span>
-<span class="lineno">   46 </span><span class="spaces">    </span><span class="istickedoff">in  toEnum (7 * ((group + 1) `mod` 3) + position)</span>
-<span class="lineno">   47 </span><span class="spaces"></span><span class="istickedoff">applyTransformation Avgad =</span>
-<span class="lineno">   48 </span><span class="spaces">  </span><span class="istickedoff">map</span>
-<span class="lineno">   49 </span><span class="spaces">    </span><span class="istickedoff">$ toFinal</span>
-<span class="lineno">   50 </span><span class="spaces">    </span><span class="istickedoff">. (\h -&gt; case h of</span>
-<span class="lineno">   51 </span><span class="spaces">        </span><span class="istickedoff">Tav -&gt; Alef</span>
-<span class="lineno">   52 </span><span class="spaces">        </span><span class="istickedoff">_   -&gt; succ h</span>
-<span class="lineno">   53 </span><span class="spaces">      </span><span class="istickedoff">)</span>
-<span class="lineno">   54 </span><span class="spaces">    </span><span class="istickedoff">. fromFinal</span></span>
+<span class="lineno">   40 </span><span class="spaces">  </span><span class="istickedoff">map</span>
+<span class="lineno">   41 </span><span class="spaces">    </span><span class="istickedoff">$ toEnum</span>
+<span class="lineno">   42 </span><span class="spaces">    </span><span class="istickedoff">. (`mod` (1 + fromEnum (maxBound :: HFLetter)))</span>
+<span class="lineno">   43 </span><span class="spaces">    </span><span class="istickedoff">. (+ 9)</span>
+<span class="lineno">   44 </span><span class="spaces">    </span><span class="istickedoff">. fromEnum</span>
+<span class="lineno">   45 </span><span class="spaces"></span><span class="istickedoff">applyTransformation Ofanim    = map $ removeFinals . last . letterSpelling</span>
+<span class="lineno">   46 </span><span class="spaces"></span><span class="istickedoff">applyTransformation AkhasBeta = map $ \h -&gt; case fromFinal h of</span>
+<span class="lineno">   47 </span><span class="spaces">  </span><span class="istickedoff">Tav -&gt; FTav</span>
+<span class="lineno">   48 </span><span class="spaces">  </span><span class="istickedoff">_ -&gt;</span>
+<span class="lineno">   49 </span><span class="spaces">    </span><span class="istickedoff">let (group, position) = fromEnum (fromFinal h) `divMod` 7</span>
+<span class="lineno">   50 </span><span class="spaces">    </span><span class="istickedoff">in  toEnum (7 * ((group + 1) `mod` 3) + position)</span>
+<span class="lineno">   51 </span><span class="spaces"></span><span class="istickedoff">applyTransformation Avgad =</span>
+<span class="lineno">   52 </span><span class="spaces">  </span><span class="istickedoff">map</span>
+<span class="lineno">   53 </span><span class="spaces">    </span><span class="istickedoff">$ toFinal</span>
+<span class="lineno">   54 </span><span class="spaces">    </span><span class="istickedoff">. (\h -&gt; case h of</span>
+<span class="lineno">   55 </span><span class="spaces">        </span><span class="istickedoff">Tav -&gt; Alef</span>
+<span class="lineno">   56 </span><span class="spaces">        </span><span class="istickedoff">_   -&gt; succ h</span>
+<span class="lineno">   57 </span><span class="spaces">      </span><span class="istickedoff">)</span>
+<span class="lineno">   58 </span><span class="spaces">    </span><span class="istickedoff">. fromFinal</span></span>
 
 </pre>
 </body>
