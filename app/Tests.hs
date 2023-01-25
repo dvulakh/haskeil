@@ -53,6 +53,12 @@ tests =
     , testCase "Transformation akhas beta on דברים"  test23
     , testCase "Transformation ayak bakar on בראשית" test24
     , testCase "Transformation ayak bakar on דברים"  test25
+    , testCase "Transformation atbash on all"        test26
+    , testCase "Transformation achbi on all"         test27
+    , testCase "Transformation avgad on all"         test28
+    , testCase "Transformation albam on all"         test29
+    , testCase "Transformation ofanim on all"        test30
+    , testCase "Transformation akhas beta on all"    test31
     ]
   ]
 
@@ -164,3 +170,22 @@ test24 =
 test25 :: IO ()
 test25 =
   applyTransformation AyakBakar (prettyRead "דברים") @?= prettyRead "מכבקו"
+
+test26 :: IO ()
+test26 = applyTransformation Atbash (prettyRead "צ") @?= prettyRead "ה"
+
+test27 :: IO ()
+test27 = applyTransformation Achbi (prettyRead "צ") @?= prettyRead "ע"
+
+test28 :: IO ()
+test28 = applyTransformation Avgad (prettyRead "צ") @?= prettyRead "ק"
+
+test29 :: IO ()
+test29 = applyTransformation Albam (prettyRead "צ") @?= prettyRead "ז"
+
+test30 :: IO ()
+test30 = applyTransformation Ofanim (prettyRead "צ") @?= prettyRead "י"
+
+test31 :: IO ()
+test31 = applyTransformation AkhasBeta (prettyRead "צ") @?= prettyRead "ד"
+
