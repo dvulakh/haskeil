@@ -173,23 +173,23 @@ test25 =
   applyTransformation AyakBakar (prettyRead "דברים") @?= prettyRead "מכבקו"
 
 test26 :: IO ()
-test26 = applyTransformation Atbash (prettyRead "צ") @?= prettyRead "ה"
+test26 = applyTransformation Atbash (prettyRead "צכ") @?= prettyRead "הל"
 
 test27 :: IO ()
-test27 = applyTransformation Achbi (prettyRead "צ") @?= prettyRead "ע"
+test27 = applyTransformation Achbi (prettyRead "צכ") @?= prettyRead "עא"
 
 test28 :: IO ()
-test28 = applyTransformation Avgad (prettyRead "צ") @?= prettyRead "ק"
+test28 = applyTransformation Avgad (prettyRead "צכ") @?= prettyRead "קל"
 
 test29 :: IO ()
-test29 = applyTransformation Albam (prettyRead "צ") @?= prettyRead "ז"
+test29 = applyTransformation Albam (prettyRead "צכ") @?= prettyRead "זת"
 
 test30 :: IO ()
-test30 = applyTransformation Ofanim (prettyRead "צ") @?= prettyRead "י"
+test30 = applyTransformation Ofanim (prettyRead "צכ") @?= prettyRead "יפ"
 
 test31 :: IO ()
-test31 = applyTransformation AkhasBeta (prettyRead "צ") @?= prettyRead "ד"
+test31 = applyTransformation AkhasBeta (prettyRead "צכ") @?= prettyRead "דצ"
 
 test32 :: IO ()
-test32 = applyTransformation AyakBakar (prettyRead "צ") @?= prettyRead "ץ"
+test32 = applyTransformation AyakBakar (prettyRead "צכ") @?= prettyRead "ץר"
 

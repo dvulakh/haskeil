@@ -27,10 +27,10 @@ applyTransformation Atbash =
   map $ toEnum . (maxLetter -) . fromHLetter . fromFinal
 applyTransformation Albam =
   map
-    $ toHFLetter
+    $ toEnum
     . (`mod` maxLetter)
     . (+ (maxLetter `div` 2))
-    . fromHLetter
+    . fromEnum
     . fromFinal
 applyTransformation Achbi = map $ \h ->
   let (group, position) = fromEnum (removeFinals h) `divMod` halfLetter

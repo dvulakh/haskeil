@@ -46,10 +46,10 @@ span.spaces    { background: white }
 <span class="lineno">   27 </span><span class="spaces">  </span><span class="istickedoff">map $ toEnum . (maxLetter -) . fromHLetter . fromFinal</span>
 <span class="lineno">   28 </span><span class="spaces"></span><span class="istickedoff">applyTransformation Albam =</span>
 <span class="lineno">   29 </span><span class="spaces">  </span><span class="istickedoff">map</span>
-<span class="lineno">   30 </span><span class="spaces">    </span><span class="istickedoff">$ toHFLetter</span>
+<span class="lineno">   30 </span><span class="spaces">    </span><span class="istickedoff">$ toEnum</span>
 <span class="lineno">   31 </span><span class="spaces">    </span><span class="istickedoff">. (`mod` maxLetter)</span>
 <span class="lineno">   32 </span><span class="spaces">    </span><span class="istickedoff">. (+ (maxLetter `div` 2))</span>
-<span class="lineno">   33 </span><span class="spaces">    </span><span class="istickedoff">. fromHLetter</span>
+<span class="lineno">   33 </span><span class="spaces">    </span><span class="istickedoff">. fromEnum</span>
 <span class="lineno">   34 </span><span class="spaces">    </span><span class="istickedoff">. fromFinal</span>
 <span class="lineno">   35 </span><span class="spaces"></span><span class="istickedoff">applyTransformation Achbi = map $ \h -&gt;</span>
 <span class="lineno">   36 </span><span class="spaces">  </span><span class="istickedoff">let (group, position) = fromEnum (removeFinals h) `divMod` halfLetter</span>
