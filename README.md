@@ -7,18 +7,14 @@
 <td align="right">30%</td><td>4/13</td><td width=100><img src="https://progress-bar.dev/30"></td><td align="right">100%</td><td>11/11</td><td width=100><img src="https://progress-bar.dev/100"></td><td align="right">100%</td><td>94/94</td><td width=100><img src="https://progress-bar.dev/100"></td></tr>
 <tr>
 <td>&nbsp;&nbsp;<tt>module <a href="https://htmlpreview.github.io/?https://github.com/dvulakh/haskeil/blob/main/coverage/Hebrew.hs.html">Hebrew</a></tt></td>
-<<<<<<< HEAD
-<td align="right">32%</td><td>24/75</td><td width=100><img src="https://progress-bar.dev/32"></td><td align="right">48%</td><td>50/104</td><td width=100><img src="https://progress-bar.dev/48"></td><td align="right">57%</td><td>127/221</td><td width=100><img src="https://progress-bar.dev/57"></td></tr>
-<tr></tr><tr style="background: #e0e0e0">
-<th align=left>&nbsp;&nbsp;Program Coverage Total</tt></th>
-<td align="right">30%</td><td>28/92</td><td width=100><img src="https://progress-bar.dev/30"></td><td align="right">53%</td><td>61/115</td><td width=100><img src="https://progress-bar.dev/53"></td><td align="right">70%</td><td>221/315</td><td width=100><img src="https://progress-bar.dev/70"></td></tr>
-=======
-<td align="right">40%</td><td>22/54</td><td width=100><img src="https://progress-bar.dev/40"></td><td align="right">57%</td><td>60/104</td><td width=100><img src="https://progress-bar.dev/57"></td><td align="right">62%</td><td>139/221</td><td width=100><img src="https://progress-bar.dev/62"></td></tr>
+<td align="right">38%</td><td>21/54</td><td width=100><img src="https://progress-bar.dev/38"></td><td align="right">58%</td><td>61/104</td><td width=100><img src="https://progress-bar.dev/58"></td><td align="right">63%</td><td>140/221</td><td width=100><img src="https://progress-bar.dev/63"></td></tr>
+<tr>
+<td>&nbsp;&nbsp;<tt>module <a href="https://htmlpreview.github.io/?https://github.com/dvulakh/haskeil/blob/main/coverage/Search.hs.html">Search</a></tt></td>
+<td align="right">0%</td><td>0/3</td><td width=100><img src="https://progress-bar.dev/0"></td><td align="right">-&nbsp;</td><td>0/0</td><td width=100>&nbsp;</td><td align="right">0%</td><td>0/28</td><td width=100><img src="https://progress-bar.dev/0"></td></tr>
 <tr>
 <td>&nbsp;&nbsp;<tt>module <a href="https://htmlpreview.github.io/?https://github.com/dvulakh/haskeil/blob/main/coverage/Transformation.hs.html">Transformation</a></tt></td>
-<td align="right">30%</td><td>4/13</td><td width=100><img src="https://progress-bar.dev/30"></td><td align="right">80%</td><td>8/10</td><td width=100><img src="https://progress-bar.dev/80"></td><td align="right">84%</td><td>87/103</td><td width=100><img src="https://progress-bar.dev/84"></td></tr>
+<td align="right">30%</td><td>4/13</td><td width=100><img src="https://progress-bar.dev/30"></td><td align="right">91%</td><td>11/12</td><td width=100><img src="https://progress-bar.dev/91"></td><td align="right">99%</td><td>116/117</td><td width=100><img src="https://progress-bar.dev/99"></td></tr>
 <tr></tr><tr style="background: #e0e0e0">
 <th align=left>&nbsp;&nbsp;Program Coverage Total</tt></th>
-<td align="right">37%</td><td>30/80</td><td width=100><img src="https://progress-bar.dev/37"></td><td align="right">63%</td><td>79/125</td><td width=100><img src="https://progress-bar.dev/63"></td><td align="right">76%</td><td>320/418</td><td width=100><img src="https://progress-bar.dev/76"></td></tr>
->>>>>>> 3487923e2db02830d46876773ccc98bb1e437230
+<td align="right">34%</td><td>29/83</td><td width=100><img src="https://progress-bar.dev/34"></td><td align="right">65%</td><td>83/127</td><td width=100><img src="https://progress-bar.dev/65"></td><td align="right">76%</td><td>350/460</td><td width=100><img src="https://progress-bar.dev/76"></td></tr>
 </table></body></html>
