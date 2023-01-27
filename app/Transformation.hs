@@ -27,7 +27,7 @@ applyTransformation Achbi = map $ \h ->
   in  toEnum $ halfLetter * group + (halfLetter - position) - 1
 applyTransformation AyakBakar =
   map $ mapEnum $ (`mod` (1 + fromEnum (maxBound :: HFLetter))) . (+ 9)
-applyTransformation Ofanim    = map $ removeFinals . last . letterSpelling
+applyTransformation Ofanim    = map $ last . letterSpelling
 applyTransformation AkhasBeta = map $ \h -> case fromFinal h of
   Tav -> FTav
   _ ->

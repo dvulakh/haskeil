@@ -24,15 +24,15 @@ span.spaces    { background: white }
 <span class="lineno">    5 </span>import           Transformation
 <span class="lineno">    6 </span>
 <span class="lineno">    7 </span>import           Control.Applicative
-<span class="lineno">    8 </span>import           Data.Bifunctor
-<span class="lineno">    9 </span>
-<span class="lineno">   10 </span>type Hop = (Gematria, Transformation)
-<span class="lineno">   11 </span>
-<span class="lineno">   12 </span>allHops :: [Hop]
-<span class="lineno">   13 </span><span class="decl"><span class="nottickedoff">allHops = liftA2 (,) [minBound ..] [minBound ..]</span></span>
-<span class="lineno">   14 </span>
-<span class="lineno">   15 </span>applyHop :: Hop -&gt; HFWord -&gt; Int
-<span class="lineno">   16 </span><span class="decl"><span class="nottickedoff">applyHop = uncurry (.) . bimap computeGematria applyTransformation</span></span>
+<span class="lineno">    8 </span>
+<span class="lineno">    9 </span>type Hop = (PostProcess, Gematria, Transformation)
+<span class="lineno">   10 </span>
+<span class="lineno">   11 </span>allHops :: [Hop]
+<span class="lineno">   12 </span><span class="decl"><span class="nottickedoff">allHops = liftA3 (,,) [minBound ..] [minBound ..] [minBound ..]</span></span>
+<span class="lineno">   13 </span>
+<span class="lineno">   14 </span>applyHop :: Hop -&gt; HFWord -&gt; Int
+<span class="lineno">   15 </span><span class="decl"><span class="nottickedoff">applyHop (p, g, t) w =</span>
+<span class="lineno">   16 </span><span class="spaces">  </span><span class="nottickedoff">applyPostProcess p w (computeGematria g $ applyTransformation t w)</span></span>
 <span class="lineno">   17 </span>
 <span class="lineno">   18 </span>oneHop :: HFWord -&gt; HFWord -&gt; [(Hop, Hop)]
 <span class="lineno">   19 </span><span class="decl"><span class="nottickedoff">oneHop w1 w2 = do</span>

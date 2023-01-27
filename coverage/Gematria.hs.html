@@ -19,57 +19,65 @@ span.spaces    { background: white }
 <pre>
 <span class="lineno">    1 </span>module Gematria
 <span class="lineno">    2 </span>  ( Gematria(..)
-<span class="lineno">    3 </span>  , computeGematria
-<span class="lineno">    4 </span>  , gadolValue
-<span class="lineno">    5 </span>  , hechrachiValue
-<span class="lineno">    6 </span>  ) where
-<span class="lineno">    7 </span>
-<span class="lineno">    8 </span>import           Hebrew
+<span class="lineno">    3 </span>  , PostProcess(..)
+<span class="lineno">    4 </span>  , computeGematria
+<span class="lineno">    5 </span>  , applyPostProcess
+<span class="lineno">    6 </span>  , gadolValue
+<span class="lineno">    7 </span>  , hechrachiValue
+<span class="lineno">    8 </span>  ) where
 <span class="lineno">    9 </span>
-<span class="lineno">   10 </span>data Gematria = Hechrachi
-<span class="lineno">   11 </span>              | Gadol
-<span class="lineno">   12 </span>              | Kattan
-<span class="lineno">   13 </span>              | Siduri
-<span class="lineno">   14 </span>              -- | Boneh
-<span class="lineno">   15 </span>              | Kidmi
-<span class="lineno">   16 </span>              | Prati
-<span class="lineno">   17 </span>              | Merubah
-<span class="lineno">   18 </span>              | Meshulash
-<span class="lineno">   19 </span>              | Akhor
-<span class="lineno">   20 </span>              -- | Mispari
-<span class="lineno">   21 </span>              | BeMilui
-<span class="lineno">   22 </span>              | Neelam
-<span class="lineno">   23 </span>              -- | Misafi
-<span class="lineno">   24 </span>              -- | Kolel
-<span class="lineno">   25 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff">Show</span></span>)
-<span class="lineno">   26 </span>
-<span class="lineno">   27 </span>gadolValue :: HFLetter -&gt; Int
-<span class="lineno">   28 </span><span class="decl"><span class="istickedoff">gadolValue h = 10 ^ zeros * (digit + 1)</span>
-<span class="lineno">   29 </span><span class="spaces">  </span><span class="istickedoff">where (zeros, digit) = fromEnum h `divMod` 9</span></span>
-<span class="lineno">   30 </span>
-<span class="lineno">   31 </span>hechrachiValue :: HFLetter -&gt; Int
-<span class="lineno">   32 </span><span class="decl"><span class="istickedoff">hechrachiValue = gadolValue . removeFinals</span></span>
-<span class="lineno">   33 </span>
-<span class="lineno">   34 </span>stam :: (HFLetter -&gt; Int) -&gt; HFWord -&gt; Int
-<span class="lineno">   35 </span><span class="decl"><span class="istickedoff">stam = (sum .) . map</span></span>
+<span class="lineno">   10 </span>import           Hebrew
+<span class="lineno">   11 </span>
+<span class="lineno">   12 </span>data Gematria = Hechrachi
+<span class="lineno">   13 </span>              | Gadol
+<span class="lineno">   14 </span>              | Kattan
+<span class="lineno">   15 </span>              | Siduri
+<span class="lineno">   16 </span>              -- | Boneh
+<span class="lineno">   17 </span>              | Kidmi
+<span class="lineno">   18 </span>              | Prati
+<span class="lineno">   19 </span>              | Merubah
+<span class="lineno">   20 </span>              | Meshulash
+<span class="lineno">   21 </span>              | Akhor
+<span class="lineno">   22 </span>              -- | Mispari
+<span class="lineno">   23 </span>              | BeMilui
+<span class="lineno">   24 </span>              | Neelam
+<span class="lineno">   25 </span>              -- | Misafi
+<span class="lineno">   26 </span>              -- | Kolel
+<span class="lineno">   27 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff">Show</span></span>)
+<span class="lineno">   28 </span>
+<span class="lineno">   29 </span>data PostProcess = Misafi
+<span class="lineno">   30 </span>                 | Kolel
+<span class="lineno">   31 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff">Show</span></span>)
+<span class="lineno">   32 </span>
+<span class="lineno">   33 </span>gadolValue :: HFLetter -&gt; Int
+<span class="lineno">   34 </span><span class="decl"><span class="istickedoff">gadolValue h = 10 ^ zeros * (digit + 1)</span>
+<span class="lineno">   35 </span><span class="spaces">  </span><span class="istickedoff">where (zeros, digit) = fromEnum h `divMod` 9</span></span>
 <span class="lineno">   36 </span>
-<span class="lineno">   37 </span>computeGematria :: Gematria -&gt; HFWord -&gt; Int
-<span class="lineno">   38 </span><span class="decl"><span class="istickedoff">computeGematria Hechrachi = stam hechrachiValue</span>
-<span class="lineno">   39 </span><span class="spaces"></span><span class="istickedoff">computeGematria Gadol     = stam gadolValue</span>
-<span class="lineno">   40 </span><span class="spaces"></span><span class="istickedoff">computeGematria Kattan    = stam $ (+ 1) . (`mod` 9) . fromEnum . removeFinals</span>
-<span class="lineno">   41 </span><span class="spaces"></span><span class="istickedoff">computeGematria Siduri    = stam $ (+ 1) . fromEnum</span>
-<span class="lineno">   42 </span><span class="spaces"></span><span class="istickedoff">--computeGematria Boneh     = undefined</span>
-<span class="lineno">   43 </span><span class="spaces"></span><span class="istickedoff">computeGematria Kidmi     = computeGematria Hechrachi . (enumFromTo FAlef =&lt;&lt;)</span>
-<span class="lineno">   44 </span><span class="spaces"></span><span class="istickedoff">computeGematria Prati     = stam $ (^ (2 :: Int)) . hechrachiValue</span>
-<span class="lineno">   45 </span><span class="spaces"></span><span class="istickedoff">computeGematria Merubah   = (^ (2 :: Int)) . computeGematria Hechrachi</span>
-<span class="lineno">   46 </span><span class="spaces"></span><span class="istickedoff">computeGematria Meshulash = stam $ (^ (3 :: Int)) . hechrachiValue</span>
-<span class="lineno">   47 </span><span class="spaces"></span><span class="istickedoff">computeGematria Akhor     = sum . zipWith (*) [1 ..] . map hechrachiValue</span>
-<span class="lineno">   48 </span><span class="spaces"></span><span class="istickedoff">--computeGematria Mispari   = undefined</span>
-<span class="lineno">   49 </span><span class="spaces"></span><span class="istickedoff">computeGematria BeMilui   = computeGematria Hechrachi . (letterSpelling =&lt;&lt;)</span>
-<span class="lineno">   50 </span><span class="spaces"></span><span class="istickedoff">computeGematria Neelam    = computeGematria Hechrachi . (spell =&lt;&lt;)</span>
-<span class="lineno">   51 </span><span class="spaces">  </span><span class="istickedoff">where spell h = filter (/= h) $ letterSpelling h</span></span>
-<span class="lineno">   52 </span>--computeGematria Misafi = undefined
-<span class="lineno">   53 </span>--computeGematria Kolel  = undefined
+<span class="lineno">   37 </span>hechrachiValue :: HFLetter -&gt; Int
+<span class="lineno">   38 </span><span class="decl"><span class="istickedoff">hechrachiValue = gadolValue . removeFinals</span></span>
+<span class="lineno">   39 </span>
+<span class="lineno">   40 </span>stam :: (HFLetter -&gt; Int) -&gt; HFWord -&gt; Int
+<span class="lineno">   41 </span><span class="decl"><span class="istickedoff">stam = (sum .) . map</span></span>
+<span class="lineno">   42 </span>
+<span class="lineno">   43 </span>computeGematria :: Gematria -&gt; HFWord -&gt; Int
+<span class="lineno">   44 </span><span class="decl"><span class="istickedoff">computeGematria Hechrachi = stam hechrachiValue</span>
+<span class="lineno">   45 </span><span class="spaces"></span><span class="istickedoff">computeGematria Gadol     = stam gadolValue</span>
+<span class="lineno">   46 </span><span class="spaces"></span><span class="istickedoff">computeGematria Kattan    = stam $ (+ 1) . (`mod` 9) . fromEnum . removeFinals</span>
+<span class="lineno">   47 </span><span class="spaces"></span><span class="istickedoff">computeGematria Siduri    = stam $ (+ 1) . fromEnum</span>
+<span class="lineno">   48 </span><span class="spaces"></span><span class="istickedoff">--computeGematria Boneh     = undefined</span>
+<span class="lineno">   49 </span><span class="spaces"></span><span class="istickedoff">computeGematria Kidmi     = computeGematria Hechrachi . (enumFromTo FAlef =&lt;&lt;)</span>
+<span class="lineno">   50 </span><span class="spaces"></span><span class="istickedoff">computeGematria Prati     = stam $ (^ (2 :: Int)) . hechrachiValue</span>
+<span class="lineno">   51 </span><span class="spaces"></span><span class="istickedoff">computeGematria Merubah   = (^ (2 :: Int)) . computeGematria Hechrachi</span>
+<span class="lineno">   52 </span><span class="spaces"></span><span class="istickedoff">computeGematria Meshulash = stam $ (^ (3 :: Int)) . hechrachiValue</span>
+<span class="lineno">   53 </span><span class="spaces"></span><span class="istickedoff">computeGematria Akhor     = sum . zipWith (*) [1 ..] . map hechrachiValue</span>
+<span class="lineno">   54 </span><span class="spaces"></span><span class="istickedoff">--computeGematria Mispari   = undefined</span>
+<span class="lineno">   55 </span><span class="spaces"></span><span class="istickedoff">computeGematria BeMilui   = computeGematria Hechrachi . (letterSpelling =&lt;&lt;)</span>
+<span class="lineno">   56 </span><span class="spaces"></span><span class="istickedoff">computeGematria Neelam    = computeGematria Hechrachi . (spell =&lt;&lt;)</span>
+<span class="lineno">   57 </span><span class="spaces">  </span><span class="istickedoff">where spell h = filter (/= h) $ letterSpelling h</span></span>
+<span class="lineno">   58 </span>
+<span class="lineno">   59 </span>applyPostProcess :: PostProcess -&gt; HFWord -&gt; Int -&gt; Int
+<span class="lineno">   60 </span><span class="decl"><span class="nottickedoff">applyPostProcess Misafi h = (+ length h)</span>
+<span class="lineno">   61 </span><span class="spaces"></span><span class="nottickedoff">applyPostProcess Kolel  _ = (+ 1)</span></span>
 
 </pre>
 </body>

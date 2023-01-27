@@ -139,7 +139,7 @@ test15 =
 
 test16 :: IO ()
 test16 =
-  applyTransformation Ofanim (prettyRead "בראשית") @?= prettyRead "תשפנדו"
+  applyTransformation Ofanim (prettyRead "בראשית") @?= prettyRead "תשףןדו"
 
 test17 :: IO ()
 test17 =
@@ -158,7 +158,7 @@ test21 :: IO ()
 test21 = applyTransformation Albam (prettyRead "דברים") @?= prettyRead "סמטשב"
 
 test22 :: IO ()
-test22 = applyTransformation Ofanim (prettyRead "דברים") @?= prettyRead "תתשדמ"
+test22 = applyTransformation Ofanim (prettyRead "דברים") @?= prettyRead "תתשדם"
 
 test23 :: IO ()
 test23 =
@@ -173,23 +173,27 @@ test25 =
   applyTransformation AyakBakar (prettyRead "דברים") @?= prettyRead "מכבקו"
 
 test26 :: IO ()
-test26 = applyTransformation Atbash (prettyRead "צכ") @?= prettyRead "הל"
+test26 = applyTransformation Atbash (prettyRead "אבגדהוזחטיכלמנסעפצקרשת")
+  @?= prettyRead "תשרקצפעסנמלכיטחזוהדגבא"
 
 test27 :: IO ()
-test27 = applyTransformation Achbi (prettyRead "צכ") @?= prettyRead "עא"
+test27 = applyTransformation Achbi (prettyRead "אבגדהוזחטיכלמנסעפצקרשת")
+  @?= prettyRead "כיטחזוהדגבאתשרקצפעסנמל"
 
 test28 :: IO ()
-test28 = applyTransformation Avgad (prettyRead "צכ") @?= prettyRead "קל"
+test28 = applyTransformation Avgad (prettyRead "אבגדהוזחטיכלמנסעפצקרשת")
+  @?= prettyRead "בגדהוזחטיכלמנסעפצקרשתא"
 
 test29 :: IO ()
-test29 = applyTransformation Albam (prettyRead "צכ") @?= prettyRead "זת"
+test29 = applyTransformation Albam (prettyRead "אבגדהוזחטיכלמנסעפצקרשת")
+  @?= prettyRead "למנסעפצקרשתאבגדהוזחטיכ"
 
 test30 :: IO ()
-test30 = applyTransformation Ofanim (prettyRead "צכ") @?= prettyRead "יפ"
+test30 = applyTransformation Ofanim (prettyRead "אבגדהוזחטיכלמנסעפצקרשת")
+  @?= prettyRead "ףתלתאוןתתדףדםןךןאיףשןו"
 
 test31 :: IO ()
 test31 = applyTransformation AkhasBeta (prettyRead "צכ") @?= prettyRead "דצ"
 
 test32 :: IO ()
 test32 = applyTransformation AyakBakar (prettyRead "צכ") @?= prettyRead "ץר"
-

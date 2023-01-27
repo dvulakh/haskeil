@@ -232,7 +232,7 @@ letterSpelling h = prettyRead $ case fromFinal h of
   Nun    -> "נון"
   Samech -> "סמך"
   Ayin   -> "עין"
-  Pay    -> "פי"
+  Pay    -> "פא"
   Tzadi  -> "צדי"
   Kuf    -> "קוף"
   Reish  -> "ריש"
