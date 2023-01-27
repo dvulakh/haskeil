@@ -42,7 +42,7 @@ applyTransformation AyakBakar =
     . (`mod` (1 + fromEnum (maxBound :: HFLetter)))
     . (+ 9)
     . fromEnum
-applyTransformation Ofanim    = map $ removeFinals . last . letterSpelling
+applyTransformation Ofanim    = map $ last . letterSpelling
 applyTransformation AkhasBeta = map $ \h -> case fromFinal h of
   Tav -> FTav
   _ ->
