@@ -1,6 +1,8 @@
 module Gematria
   ( Gematria(..)
+  , PostProcess(..)
   , computeGematria
+  , applyPostProcess
   , gadolValue
   , hechrachiValue
   ) where
@@ -22,6 +24,10 @@ data Gematria = Hechrachi
               | Neelam
               -- | Misafi
               -- | Kolel
+  deriving (Bounded, Enum, Show)
+
+data PostProcess = Misafi
+                 | Kolel
   deriving (Bounded, Enum, Show)
 
 gadolValue :: HFLetter -> Int
@@ -49,5 +55,7 @@ computeGematria Akhor     = sum . zipWith (*) [1 ..] . map hechrachiValue
 computeGematria BeMilui   = computeGematria Hechrachi . (letterSpelling =<<)
 computeGematria Neelam    = computeGematria Hechrachi . (spell =<<)
   where spell h = filter (/= h) $ letterSpelling h
---computeGematria Misafi = undefined
---computeGematria Kolel  = undefined
+
+applyPostProcess :: PostProcess -> HFWord -> Int -> Int
+applyPostProcess Misafi h = (+ length h)
+applyPostProcess Kolel _ = (+1)

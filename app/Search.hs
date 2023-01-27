@@ -5,15 +5,14 @@ import           Hebrew
 import           Transformation
 
 import           Control.Applicative
-import           Data.Bifunctor
 
-type Hop = (Gematria, Transformation)
+type Hop = (PostProcess, Gematria, Transformation)
 
 allHops :: [Hop]
-allHops = liftA2 (,) [minBound ..] [minBound ..]
+allHops = liftA3 (,,) [minBound ..] [minBound ..] [minBound ..]
 
 applyHop :: Hop -> HFWord -> Int
-applyHop = uncurry (.) . bimap computeGematria applyTransformation
+applyHop (p, g, t) w = applyPostProcess p w (computeGematria g $ applyTransformation t w)
 
 oneHop :: HFWord -> HFWord -> [(Hop, Hop)]
 oneHop w1 w2 = do
