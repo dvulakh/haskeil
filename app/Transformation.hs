@@ -1,7 +1,6 @@
 module Transformation (Transformation(..), applyTransformation) where
 import           Hebrew
 
--- TODO: Test these!!
 data Transformation = Aatat
                     | Atbash
                     | Albam
@@ -12,36 +11,22 @@ data Transformation = Aatat
                     | Avgad
   deriving (Bounded, Enum, Show)
 
-toHFLetter :: Int -> HFLetter
-toHFLetter = toEnum . (+ (-1))
-
-fromHLetter :: HLetter -> Int
-fromHLetter = (+ 1) . fromEnum
-
 maxLetter :: Int
 maxLetter = fromEnum (maxBound :: HLetter) + 1
 
+halfLetter :: Int
+halfLetter = maxLetter `div` 2
+
 applyTransformation :: Transformation -> HFWord -> HFWord
-applyTransformation Aatat = id
-applyTransformation Atbash =
-  map $ toEnum . (maxLetter -) . fromHLetter . fromFinal
+applyTransformation Aatat  = id
+applyTransformation Atbash = map $ mapEnum (maxLetter - 1 -) . fromFinal
 applyTransformation Albam =
-  map
-    $ toEnum
-    . (`mod` maxLetter)
-    . (+ (maxLetter `div` 2))
-    . fromEnum
-    . fromFinal
+  map $ mapEnum ((`mod` maxLetter) . (+ halfLetter)) . fromFinal
 applyTransformation Achbi = map $ \h ->
   let (group, position) = fromEnum (removeFinals h) `divMod` halfLetter
-  in  toHFLetter $ halfLetter * group + (halfLetter - position)
-  where halfLetter = maxLetter `div` 2
+  in  toEnum $ halfLetter * group + (halfLetter - position) - 1
 applyTransformation AyakBakar =
-  map
-    $ toEnum
-    . (`mod` (1 + fromEnum (maxBound :: HFLetter)))
-    . (+ 9)
-    . fromEnum
+  map $ mapEnum $ (`mod` (1 + fromEnum (maxBound :: HFLetter))) . (+ 9)
 applyTransformation Ofanim    = map $ removeFinals . last . letterSpelling
 applyTransformation AkhasBeta = map $ \h -> case fromFinal h of
   Tav -> FTav

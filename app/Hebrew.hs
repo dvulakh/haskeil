@@ -92,6 +92,10 @@ instance Pretty HFLetter where
     pure (l, s')
 
 
+mapEnum :: (Enum a, Enum b) => (Int -> Int) -> a -> b
+mapEnum = (. fromEnum) . (toEnum .)
+
+
 toChar :: HFLetter -> Char
 toChar FAlef   = 'א'
 toChar FBet    = 'ב'
@@ -190,6 +194,7 @@ fromFinal FFNun   = Nun
 fromFinal FFPay   = Pay
 fromFinal FFTzadi = Tzadi
 fromFinal fletter = toEnum $ fromEnum fletter
+
 
 removeFinals :: HFLetter -> HFLetter
 removeFinals = toFinal . fromFinal
