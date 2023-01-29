@@ -3,6 +3,7 @@ module Gematria
   , PostProcess(..)
   , computeGematria
   , applyPostProcess
+  , explainPostProcess
   , gadolValue
   , hechrachiValue
   ) where
@@ -26,9 +27,15 @@ data Gematria = Hechrachi
               -- | Kolel
   deriving (Bounded, Enum, Show)
 
-data PostProcess = Misafi
+data PostProcess = Shaveh
+                 | Misafi
                  | Kolel
-  deriving (Bounded, Enum, Show)
+  deriving (Eq, Bounded, Enum, Show)
+
+explainPostProcess :: PostProcess -> String
+explainPostProcess Shaveh = ""
+explainPostProcess Misafi = "adding the number of letters in the word"
+explainPostProcess Kolel = "adding one"
 
 gadolValue :: HFLetter -> Int
 gadolValue h = 10 ^ zeros * (digit + 1)
@@ -57,5 +64,6 @@ computeGematria Neelam    = computeGematria Hechrachi . (spell =<<)
   where spell h = filter (/= h) $ letterSpelling h
 
 applyPostProcess :: PostProcess -> HFWord -> Int -> Int
+applyPostProcess Shaveh _ = id
 applyPostProcess Misafi h = (+ length h)
 applyPostProcess Kolel  _ = (+ 1)

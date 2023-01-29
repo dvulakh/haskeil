@@ -12,8 +12,5 @@ main = do
   print word
   print $ computeGematria Hechrachi $ applyTransformation AkhasBeta word
   print $ head $ oneHop (prettyRead "תריג") (prettyRead "גרתי")
-  print $ oneHop (prettyRead "משה") (prettyRead "השטן")
-  print $ oneHop (prettyRead "כבודבשבילנשים") (prettyRead "ישיבתאםאייטיי")
-  print $ oneHop (prettyRead "אמא") (prettyRead "אהבה")
-  print $ oneHop (prettyRead "אשה") (prettyRead "בינה")
-  print $ applyTransformation Achbi (prettyRead "אשה")
+  putStrLn $ head $ wordToWord (prettyRead "משה") (prettyRead "השטן")
+  putStrLn $ head $ wordToWord (prettyRead "כבודבשבילנשים") (prettyRead "ישיבתאםאייטיי")
