@@ -30,12 +30,12 @@ data Gematria = Hechrachi
 data PostProcess = Shaveh
                  | Misafi
                  | Kolel
-  deriving (Eq, Bounded, Enum, Show)
+  deriving (Bounded, Enum, Eq, Show)
 
 explainPostProcess :: PostProcess -> String
 explainPostProcess Shaveh = ""
 explainPostProcess Misafi = "adding the number of letters in the word"
-explainPostProcess Kolel = "adding one"
+explainPostProcess Kolel  = "adding one"
 
 gadolValue :: HFLetter -> Int
 gadolValue h = 10 ^ zeros * (digit + 1)

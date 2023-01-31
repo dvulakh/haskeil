@@ -49,12 +49,12 @@ span.spaces    { background: white }
 <span class="lineno">   30 </span>data PostProcess = Shaveh
 <span class="lineno">   31 </span>                 | Misafi
 <span class="lineno">   32 </span>                 | Kolel
-<span class="lineno">   33 </span>  deriving (<span class="decl"><span class="nottickedoff">Eq</span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff">Show</span></span>)
+<span class="lineno">   33 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff">Eq</span></span>, <span class="decl"><span class="nottickedoff">Show</span></span>)
 <span class="lineno">   34 </span>
 <span class="lineno">   35 </span>explainPostProcess :: PostProcess -&gt; String
 <span class="lineno">   36 </span><span class="decl"><span class="nottickedoff">explainPostProcess Shaveh = &quot;&quot;</span>
 <span class="lineno">   37 </span><span class="spaces"></span><span class="nottickedoff">explainPostProcess Misafi = &quot;adding the number of letters in the word&quot;</span>
-<span class="lineno">   38 </span><span class="spaces"></span><span class="nottickedoff">explainPostProcess Kolel = &quot;adding one&quot;</span></span>
+<span class="lineno">   38 </span><span class="spaces"></span><span class="nottickedoff">explainPostProcess Kolel  = &quot;adding one&quot;</span></span>
 <span class="lineno">   39 </span>
 <span class="lineno">   40 </span>gadolValue :: HFLetter -&gt; Int
 <span class="lineno">   41 </span><span class="decl"><span class="istickedoff">gadolValue h = 10 ^ zeros * (digit + 1)</span>
@@ -85,7 +85,7 @@ span.spaces    { background: white }
 <span class="lineno">   66 </span>applyPostProcess :: PostProcess -&gt; HFWord -&gt; Int -&gt; Int
 <span class="lineno">   67 </span><span class="decl"><span class="nottickedoff">applyPostProcess Shaveh _ = id</span>
 <span class="lineno">   68 </span><span class="spaces"></span><span class="nottickedoff">applyPostProcess Misafi h = (+ length h)</span>
-<span class="lineno">   69 </span><span class="spaces"></span><span class="nottickedoff">applyPostProcess Kolel _ = (+1)</span></span>
+<span class="lineno">   69 </span><span class="spaces"></span><span class="nottickedoff">applyPostProcess Kolel  _ = (+ 1)</span></span>
 
 </pre>
 </body>

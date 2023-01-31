@@ -25,14 +25,14 @@ span.spaces    { background: white }
 <span class="lineno">    6 </span>
 <span class="lineno">    7 </span>import           Control.Applicative
 <span class="lineno">    8 </span>
-<span class="lineno">    9 </span>fst3 :: (a,b,c) -&gt; a
-<span class="lineno">   10 </span><span class="decl"><span class="nottickedoff">fst3 (x,_,_) = x</span></span>
+<span class="lineno">    9 </span>fst3 :: (a, b, c) -&gt; a
+<span class="lineno">   10 </span><span class="decl"><span class="nottickedoff">fst3 (x, _, _) = x</span></span>
 <span class="lineno">   11 </span>
-<span class="lineno">   12 </span>snd3 :: (a,b,c) -&gt; b
-<span class="lineno">   13 </span><span class="decl"><span class="nottickedoff">snd3 (_,x,_) = x</span></span>
+<span class="lineno">   12 </span>snd3 :: (a, b, c) -&gt; b
+<span class="lineno">   13 </span><span class="decl"><span class="nottickedoff">snd3 (_, x, _) = x</span></span>
 <span class="lineno">   14 </span>
-<span class="lineno">   15 </span>thd3 :: (a,b,c) -&gt; c
-<span class="lineno">   16 </span><span class="decl"><span class="nottickedoff">thd3 (_,_,x) = x</span></span>
+<span class="lineno">   15 </span>thd3 :: (a, b, c) -&gt; c
+<span class="lineno">   16 </span><span class="decl"><span class="nottickedoff">thd3 (_, _, x) = x</span></span>
 <span class="lineno">   17 </span>
 <span class="lineno">   18 </span>type Hop = (PostProcess, Gematria, Transformation)
 <span class="lineno">   19 </span>
@@ -40,21 +40,41 @@ span.spaces    { background: white }
 <span class="lineno">   21 </span><span class="decl"><span class="nottickedoff">allHops = liftA3 (,,) [minBound ..] [minBound ..] [minBound ..]</span></span>
 <span class="lineno">   22 </span>
 <span class="lineno">   23 </span>applyHop :: Hop -&gt; HFWord -&gt; Int
-<span class="lineno">   24 </span><span class="decl"><span class="nottickedoff">applyHop (p, g, t) w = applyPostProcess p w (computeGematria g $ applyTransformation t w)</span></span>
-<span class="lineno">   25 </span>
-<span class="lineno">   26 </span>oneHop :: HFWord -&gt; HFWord -&gt; [(Hop, Hop)]
-<span class="lineno">   27 </span><span class="decl"><span class="nottickedoff">oneHop w1 w2 = do</span>
-<span class="lineno">   28 </span><span class="spaces">  </span><span class="nottickedoff">h1 &lt;- allHops</span>
-<span class="lineno">   29 </span><span class="spaces">  </span><span class="nottickedoff">let g1 = applyHop h1 w1</span>
-<span class="lineno">   30 </span><span class="spaces">  </span><span class="nottickedoff">h2 &lt;- allHops</span>
-<span class="lineno">   31 </span><span class="spaces">  </span><span class="nottickedoff">let g2 = applyHop h2 w2</span>
-<span class="lineno">   32 </span><span class="spaces">  </span><span class="nottickedoff">[ (h1, h2) | g1 == g2 &amp;&amp; fst3 h2 == Shaveh ]</span></span>
-<span class="lineno">   33 </span>
-<span class="lineno">   34 </span>printHop :: Hop -&gt; HFWord -&gt; String
-<span class="lineno">   35 </span><span class="decl"><span class="nottickedoff">printHop h w = &quot;The word &quot; ++ prettyShow w ++ (if thd3 h == Aatat then &quot;&quot; else &quot; turns into &quot; ++ prettyShow (applyTransformation (thd3 h) w) ++ &quot; under transformation &quot; ++ show (thd3 h) ++ &quot;. This&quot;) ++ &quot; has value &quot; ++ show (applyHop h w) ++ &quot; in Mispar &quot; ++ show (snd3 h) ++ if fst3 h == Shaveh then &quot;.&quot; else &quot; after &quot; ++ explainPostProcess (fst3 h) ++ &quot;.&quot;</span></span>
-<span class="lineno">   36 </span>
-<span class="lineno">   37 </span>wordToWord :: HFWord -&gt; HFWord -&gt; [String]
-<span class="lineno">   38 </span><span class="decl"><span class="nottickedoff">wordToWord w1 w2 = map (\(h1, h2) -&gt; printHop h1 w1 ++ &quot;\n&quot; ++ printHop h2 w2) $ oneHop w1 w2</span></span>
+<span class="lineno">   24 </span><span class="decl"><span class="nottickedoff">applyHop (p, g, t) w =</span>
+<span class="lineno">   25 </span><span class="spaces">  </span><span class="nottickedoff">applyPostProcess p w (computeGematria g $ applyTransformation t w)</span></span>
+<span class="lineno">   26 </span>
+<span class="lineno">   27 </span>oneHop :: HFWord -&gt; HFWord -&gt; [(Hop, Hop)]
+<span class="lineno">   28 </span><span class="decl"><span class="nottickedoff">oneHop w1 w2 = do</span>
+<span class="lineno">   29 </span><span class="spaces">  </span><span class="nottickedoff">h1 &lt;- allHops</span>
+<span class="lineno">   30 </span><span class="spaces">  </span><span class="nottickedoff">let g1 = applyHop h1 w1</span>
+<span class="lineno">   31 </span><span class="spaces">  </span><span class="nottickedoff">h2 &lt;- allHops</span>
+<span class="lineno">   32 </span><span class="spaces">  </span><span class="nottickedoff">let g2 = applyHop h2 w2</span>
+<span class="lineno">   33 </span><span class="spaces">  </span><span class="nottickedoff">[ (h1, h2) | g1 == g2 &amp;&amp; fst3 h2 == Shaveh ]</span></span>
+<span class="lineno">   34 </span>
+<span class="lineno">   35 </span>printHop :: Hop -&gt; HFWord -&gt; String
+<span class="lineno">   36 </span><span class="decl"><span class="nottickedoff">printHop h w =</span>
+<span class="lineno">   37 </span><span class="spaces">  </span><span class="nottickedoff">&quot;The word &quot;</span>
+<span class="lineno">   38 </span><span class="spaces">    </span><span class="nottickedoff">++ prettyShow w</span>
+<span class="lineno">   39 </span><span class="spaces">    </span><span class="nottickedoff">++ (if thd3 h == Aatat</span>
+<span class="lineno">   40 </span><span class="spaces">         </span><span class="nottickedoff">then &quot;&quot;</span>
+<span class="lineno">   41 </span><span class="spaces">         </span><span class="nottickedoff">else</span>
+<span class="lineno">   42 </span><span class="spaces">           </span><span class="nottickedoff">&quot; turns into &quot;</span>
+<span class="lineno">   43 </span><span class="spaces">           </span><span class="nottickedoff">++ prettyShow (applyTransformation (thd3 h) w)</span>
+<span class="lineno">   44 </span><span class="spaces">           </span><span class="nottickedoff">++ &quot; under transformation &quot;</span>
+<span class="lineno">   45 </span><span class="spaces">           </span><span class="nottickedoff">++ show (thd3 h)</span>
+<span class="lineno">   46 </span><span class="spaces">           </span><span class="nottickedoff">++ &quot;. This&quot;</span>
+<span class="lineno">   47 </span><span class="spaces">       </span><span class="nottickedoff">)</span>
+<span class="lineno">   48 </span><span class="spaces">    </span><span class="nottickedoff">++ &quot; has value &quot;</span>
+<span class="lineno">   49 </span><span class="spaces">    </span><span class="nottickedoff">++ show (applyHop h w)</span>
+<span class="lineno">   50 </span><span class="spaces">    </span><span class="nottickedoff">++ &quot; in Mispar &quot;</span>
+<span class="lineno">   51 </span><span class="spaces">    </span><span class="nottickedoff">++ show (snd3 h)</span>
+<span class="lineno">   52 </span><span class="spaces">    </span><span class="nottickedoff">++ if fst3 h == Shaveh</span>
+<span class="lineno">   53 </span><span class="spaces">         </span><span class="nottickedoff">then &quot;.&quot;</span>
+<span class="lineno">   54 </span><span class="spaces">         </span><span class="nottickedoff">else &quot; after &quot; ++ explainPostProcess (fst3 h) ++ &quot;.&quot;</span></span>
+<span class="lineno">   55 </span>
+<span class="lineno">   56 </span>wordToWord :: HFWord -&gt; HFWord -&gt; [String]
+<span class="lineno">   57 </span><span class="decl"><span class="nottickedoff">wordToWord w1 w2 =</span>
+<span class="lineno">   58 </span><span class="spaces">  </span><span class="nottickedoff">map (\(h1, h2) -&gt; printHop h1 w1 ++ &quot;\n&quot; ++ printHop h2 w2) $ oneHop w1 w2</span></span>
 
 </pre>
 </body>
