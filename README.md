@@ -10,11 +10,11 @@
 <td align="right">41%</td><td>23/55</td><td width=100><img src="https://progress-bar.dev/41"></td><td align="right">72%</td><td>75/104</td><td width=100><img src="https://progress-bar.dev/72"></td><td align="right">71%</td><td>161/225</td><td width=100><img src="https://progress-bar.dev/71"></td></tr>
 <tr>
 <td>&nbsp;&nbsp;<tt>module <a href="https://htmlpreview.github.io/?https://github.com/dvulakh/haskeil/blob/main/coverage/Search.hs.html">Search</a></tt></td>
-<td align="right">0%</td><td>0/8</td><td width=100><img src="https://progress-bar.dev/0"></td><td align="right">0%</td><td>0/4</td><td width=100><img src="https://progress-bar.dev/0"></td><td align="right">0%</td><td>0/109</td><td width=100><img src="https://progress-bar.dev/0"></td></tr>
+<td align="right">0%</td><td>0/5</td><td width=100><img src="https://progress-bar.dev/0"></td><td align="right">0%</td><td>0/2</td><td width=100><img src="https://progress-bar.dev/0"></td><td align="right">0%</td><td>0/77</td><td width=100><img src="https://progress-bar.dev/0"></td></tr>
 <tr>
 <td>&nbsp;&nbsp;<tt>module <a href="https://htmlpreview.github.io/?https://github.com/dvulakh/haskeil/blob/main/coverage/Transformation.hs.html">Transformation</a></tt></td>
 <td align="right">23%</td><td>3/13</td><td width=100><img src="https://progress-bar.dev/23"></td><td align="right">91%</td><td>11/12</td><td width=100><img src="https://progress-bar.dev/91"></td><td align="right">98%</td><td>96/97</td><td width=100><img src="https://progress-bar.dev/98"></td></tr>
 <tr></tr><tr style="background: #e0e0e0">
 <th align=left>&nbsp;&nbsp;Program Coverage Total</tt></th>
-<td align="right">29%</td><td>30/101</td><td width=100><img src="https://progress-bar.dev/29"></td><td align="right">70%</td><td>97/137</td><td width=100><img src="https://progress-bar.dev/70"></td><td align="right">65%</td><td>344/527</td><td width=100><img src="https://progress-bar.dev/65"></td></tr>
+<td align="right">30%</td><td>30/98</td><td width=100><img src="https://progress-bar.dev/30"></td><td align="right">71%</td><td>97/135</td><td width=100><img src="https://progress-bar.dev/71"></td><td align="right">69%</td><td>344/495</td><td width=100><img src="https://progress-bar.dev/69"></td></tr>
 </table></body></html>

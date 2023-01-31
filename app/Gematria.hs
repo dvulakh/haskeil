@@ -34,8 +34,8 @@ data PostProcess = Shaveh
 
 explainPostProcess :: PostProcess -> String
 explainPostProcess Shaveh = ""
-explainPostProcess Misafi = "adding the number of letters in the word"
-explainPostProcess Kolel  = "adding one"
+explainPostProcess Misafi = " after adding the number of letters in the word"
+explainPostProcess Kolel  = " after adding one for Hashem"
 
 gadolValue :: HFLetter -> Int
 gadolValue h = 10 ^ zeros * (digit + 1)

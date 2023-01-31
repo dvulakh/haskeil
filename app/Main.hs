@@ -14,4 +14,5 @@ main = do
   print $ head $ oneHop (prettyRead "תריג") (prettyRead "גרתי")
   putStrLn $ head $ wordToWord (prettyRead "משה") (prettyRead "השטן")
   putStrLn $ head $ wordToWord (prettyRead "כבודבשבילנשים")
-                               (prettyRead "ישיבתאםאייטיי")
+                               (prettyRead "ישיבתאםאייטי")
+  mapM_ putStrLn $ wordToWord (prettyRead "דוד") (prettyRead "פדיוןהבן")
