@@ -39,5 +39,5 @@ checkWords w1 w2 = case wordToWord (prettyRead w1) (prettyRead w2) of
                       _  -> False
 
 generateWordList :: [String] -> [String]
-generateWordList (w:ws) = filter (checkWords w) ws
+generateWordList (w:ws) = filter (checkWords w) ws ++ generateWordList ws
 generateWordList [] = []
