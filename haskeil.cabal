@@ -68,7 +68,7 @@ test-suite haskeil-tests
 library
   hs-source-dirs:   app
   exposed-modules:  Hebrew, Gematria, Transformation, Search
-  build-depends:    base, generic-arbitrary, safe
+  build-depends:    base, generic-arbitrary, safe, random
   default-language: Haskell2010
   ghc-options:      -fconstraint-solver-iterations=0
                     -O2
@@ -89,7 +89,7 @@ executable haskeil
   hs-source-dirs:   app
   main-is:          Main.hs
   other-modules:    Hebrew, Gematria, Transformation, Search
-  build-depends:    base, generic-arbitrary, safe
+  build-depends:    base, generic-arbitrary, safe, random
   default-language: Haskell2010
   ghc-options:      -fconstraint-solver-iterations=0
                     -O2
