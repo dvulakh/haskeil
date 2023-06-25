@@ -1,18 +1,22 @@
 module Main where
 
+import           Browser
 import           Gematria
 import           Hebrew
 import           Search
 import           Transformation
 
+import           Foreign.C.String
+
 main :: IO ()
 main = do
-  let word = prettyRead "שלום" :: HFWord
-  putStrLn $ prettyShow word
-  print word
-  print $ computeGematria Hechrachi $ applyTransformation AkhasBeta word
-  print $ head $ oneHop (prettyRead "תריג") (prettyRead "גרתי")
-  putStrLn $ head $ wordToWord (prettyRead "משה") (prettyRead "השטן")
-  putStrLn $ head $ wordToWord (prettyRead "כבודבשבילנשים")
-                               (prettyRead "ישיבתאםאייטי")
-  mapM_ putStrLn $ wordToWord (prettyRead "דוד") (prettyRead "פדיוןהבן")
+  from <- getInputValue "from_box"
+  to   <- getInputValue "to_box"
+  out  <- do
+    fs <- peekCString from
+    ts <- peekCString to
+    if fs == "" || ts == ""
+      then pure "Press 'Go' when ready"
+      else cstrToCstr from to
+  withCString out setOutput
+

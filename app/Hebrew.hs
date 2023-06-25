@@ -7,7 +7,7 @@ module Hebrew where
 import           Data.Bifunctor
 import           Data.List
 import           GHC.Generics                   ( Generic )
-import           Test.QuickCheck.Arbitrary.Generic
+--import           Test.QuickCheck.Arbitrary.Generic
 
 class Pretty a where
   prettyShow :: a -> String
@@ -41,8 +41,8 @@ data HLetter = Alef
              | Shin
              | Tav
   deriving (Bounded, Enum, Eq, Generic, Ord, Read, Show)
-  deriving (Arbitrary)
-    via GenericArbitrary HLetter
+  --deriving (Arbitrary)
+    --via GenericArbitrary HLetter
 
 
 instance Pretty HLetter where

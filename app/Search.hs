@@ -44,3 +44,4 @@ printHop h@(p, g, t) w = printf
 wordToWord :: HFWord -> HFWord -> [String]
 wordToWord w1 w2 =
   map (\(h1, h2) -> printHop h1 w1 ++ "\n" ++ printHop h2 w2) $ oneHop w1 w2
+
