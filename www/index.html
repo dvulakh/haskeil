@@ -2,21 +2,43 @@
 <html>
   <head>
   <script language="javascript" src="all.js" defer></script>
+  <link rel=stylesheet href="style.css">
   </head>
   <body>
-    <input
-      name="From:"
-      type="text"
-      id="from_box"
-      value="משה"
-    />
-    <input
-      name="To:"
-      type="text"
-      id="to_box"
-      value="שטן"
-    />
-    <button onclick="h$main(h$mainZCZCMainzimain)">Go</button>
+    <div id="header_div">
+      <p class="header_text">Haskeil</p>
+    </div>
+    <div id="intro_div">
+      <p>Have you ever wished that two words were equal in Gematria? This tool is all you need. Simply put two Hebrew words in the text boxes below, and press Go for a method to equate them!</p>
+
+    </div>
+
+    
+    <div id="inputs_div">
+      <input
+        class="word_input"
+        name="From:"
+        type="text"
+        id="from_box"
+        value="משה"
+      />
+      <input
+        class="word_input"
+        name="To:"
+        type="text"
+        id="to_box"
+        value="שטן"
+      />
+    </div>
+
+    <div id="button_div">
+      <button 
+        id="go_button"
+        onclick="h$main(h$mainZCZCMainzimain)"
+        >Go</button>
+    </div>
+    <div id="output_div">
     <p id = "output"> Output should appear here. </p>
+    </div>
   </body>
 </html>
