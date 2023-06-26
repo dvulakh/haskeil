@@ -5,9 +5,11 @@ import           Search
 
 import           Foreign.C.String
 
+-- sets the output HTML element
 foreign import javascript "((arr,offset) => document.getElementById('output').innerHTML = h$decodeUtf8z(arr,offset))"
   setOutput :: CString -> IO ()
 
+-- read the contents of one of the HTML input box elements
 foreign import javascript "((arr,offset) => h$encodeUtf8(document.getElementById(h$decodeUtf8z(arr,offset)).value))"
   getInputValueCS :: CString -> IO CString
 
