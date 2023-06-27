@@ -6,6 +6,7 @@ module Gematria
   , explainPostProcess
   , gadolValue
   , hechrachiValue
+  , linkToGematria
   ) where
 
 import           Hebrew
@@ -26,6 +27,9 @@ data Gematria = Hechrachi
               -- | Misafi
               -- | Kolel
   deriving (Bounded, Enum, Show)
+
+linkToGematria :: Gematria -> String
+linkToGematria g = linkTo $ show g
 
 data PostProcess = Shaveh
                  | Misafi

@@ -1,4 +1,4 @@
-module Transformation (Transformation(..), applyTransformation) where
+module Transformation (Transformation(..), applyTransformation, linkToTransformation) where
 import           Hebrew
 
 data Transformation = Aatat
@@ -9,18 +9,13 @@ data Transformation = Aatat
                     | Ofanim
                     | AkhasBeta
                     | Avgad
-  deriving (Bounded, Enum, Eq)
+  deriving (Bounded, Enum, Eq, Show)
 
-instance Show Transformation where
-  show AkhasBeta = "<a href='#akhasbeta'>Akhas Beta</a>"
-  show AyakBakar = "<a href='#ayakbakar'>Ayak Bakar</a>"
-  show Aatat     = "None"
-  show Atbash    = "<a href='#atbash'>Atbash</a>"
-  show Albam     = "<a href='#albam'>Albam</a>"
-  show Achbi     = "<a href='#achbi'>Achbi</a>"
-  show Ofanim    = "<a href='ofanim'>Ofanim</a>"
-  show Avgad     = "<a href='#avgad'>Avgad</a>"
 
+linkToTransformation :: Transformation -> String
+linkToTransformation AkhasBeta = "<a href='#AkhasBeta'>Akhas Beta</a>"
+linkToTransformation AyakBakar = "<a href='#AkhasBeta'>Ayak Bakar</a>"
+linkToTransformation t = linkTo $ show t
 
 maxLetter :: Int
 maxLetter = fromEnum (maxBound :: HLetter) + 1

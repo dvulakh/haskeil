@@ -213,6 +213,11 @@ numberSpelling 9 = prettyRead "תשע"
 numberSpelling 0 = prettyRead "אפס"
 numberSpelling n = numberSpelling (n `div` 10) ++ numberSpelling (n `mod` 10)
 
+linkTo :: String -> String
+linkTo name = "<a href='#" ++ name ++ "'>"
+                    ++ name
+                    ++ "</a>"
+
 
 letterSpelling :: HFLetter -> HFWord
 letterSpelling h = prettyRead $ case fromFinal h of

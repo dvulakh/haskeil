@@ -34,11 +34,11 @@ printHop h@(p, g, t) w = printf
       " turns into "
       ++ prettyShow (applyTransformation t w)
       ++ " under transformation "
-      ++ show t
+      ++ linkToTransformation t
       ++ ". This"
   )
   (applyHop h w)
-  (show g)
+  (linkToGematria g)
   (explainPostProcess p)
 
 wordToWord :: HFWord -> HFWord -> [String]
