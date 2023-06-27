@@ -1,4 +1,8 @@
-module Transformation (Transformation(..), applyTransformation, linkToTransformation) where
+module Transformation
+  ( Transformation(..)
+  , applyTransformation
+  , linkToTransformation
+  ) where
 import           Hebrew
 
 data Transformation = Aatat
@@ -15,7 +19,7 @@ data Transformation = Aatat
 linkToTransformation :: Transformation -> String
 linkToTransformation AkhasBeta = "<a href='#AkhasBeta'>Akhas Beta</a>"
 linkToTransformation AyakBakar = "<a href='#AkhasBeta'>Ayak Bakar</a>"
-linkToTransformation t = linkTo $ show t
+linkToTransformation t         = linkTo $ show t
 
 maxLetter :: Int
 maxLetter = fromEnum (maxBound :: HLetter) + 1
