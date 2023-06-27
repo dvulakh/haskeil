@@ -17,9 +17,11 @@ data Transformation = Aatat
 
 
 linkToTransformation :: Transformation -> String
-linkToTransformation AkhasBeta = "<a href='about.html#AkhasBeta'>Akhas Beta</a>"
-linkToTransformation AyakBakar = "<a href='about.html#AyakBakar'>Ayak Bakar</a>"
-linkToTransformation t         = linkTo $ show t
+linkToTransformation AkhasBeta =
+  "<a href='about.html#AkhasBeta'>Akhas Beta</a>"
+linkToTransformation AyakBakar =
+  "<a href='about.html#AyakBakar'>Ayak Bakar</a>"
+linkToTransformation t = linkTo $ show t
 
 maxLetter :: Int
 maxLetter = fromEnum (maxBound :: HLetter) + 1
