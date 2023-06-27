@@ -14,13 +14,13 @@ data Transformation = Aatat
 instance Show Transformation where
   show AkhasBeta = "<a href='#akhasbeta'>Akhas Beta</a>"
   show AyakBakar = "<a href='#ayakbakar'>Ayak Bakar</a>"
-  show Aatat = "None"
-  show Atbash = "<a href='#atbash'>Atbash</a>"
-  show Albam = "<a href='#albam'>Albam</a>"
-  show Achbi = "<a href='#achbi'>Achbi</a>"
-  show Ofanim = "<a href='ofanim'>Ofanim</a>"
-  show Avgad = "<a href='#avgad'>Avgad</a>"
-  
+  show Aatat     = "None"
+  show Atbash    = "<a href='#atbash'>Atbash</a>"
+  show Albam     = "<a href='#albam'>Albam</a>"
+  show Achbi     = "<a href='#achbi'>Achbi</a>"
+  show Ofanim    = "<a href='ofanim'>Ofanim</a>"
+  show Avgad     = "<a href='#avgad'>Avgad</a>"
+
 
 maxLetter :: Int
 maxLetter = fromEnum (maxBound :: HLetter) + 1
