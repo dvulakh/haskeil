@@ -17,8 +17,8 @@ data Transformation = Aatat
 
 
 linkToTransformation :: Transformation -> String
-linkToTransformation AkhasBeta = "<a href='#AkhasBeta'>Akhas Beta</a>"
-linkToTransformation AyakBakar = "<a href='#AkhasBeta'>Ayak Bakar</a>"
+linkToTransformation AkhasBeta = "<a href='about.html#AkhasBeta'>Akhas Beta</a>"
+linkToTransformation AyakBakar = "<a href='about.html#AyakBakar'>Ayak Bakar</a>"
 linkToTransformation t         = linkTo $ show t
 
 maxLetter :: Int

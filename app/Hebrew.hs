@@ -214,7 +214,7 @@ numberSpelling 0 = prettyRead "אפס"
 numberSpelling n = numberSpelling (n `div` 10) ++ numberSpelling (n `mod` 10)
 
 linkTo :: String -> String
-linkTo name = "<a href='#" ++ name ++ "'>" ++ name ++ "</a>"
+linkTo name = "<a href='about.html#" ++ name ++ "'>" ++ name ++ "</a>"
 
 
 letterSpelling :: HFLetter -> HFWord
