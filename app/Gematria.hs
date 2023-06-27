@@ -13,7 +13,6 @@ import           Hebrew
 
 data Gematria = Hechrachi
               | Gadol
-              | Kattan
               | Siduri
               -- | Boneh
               | Kidmi
@@ -24,6 +23,7 @@ data Gematria = Hechrachi
               -- | Mispari
               | BeMilui
               | Neelam
+              | Kattan
               -- | Misafi
               -- | Kolel
   deriving (Bounded, Enum, Show)
