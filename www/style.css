@@ -13,22 +13,18 @@ body {
   flex-direction: column;
 }
 
-header {
-  background-color: #32a852;
-  text-align: center;
-}
-
 .header_text {
-  font-size: 36px;
+  font-size: 42px;
   color: #fff;
   padding: 20px;
+  margin: 0;
 }
 
 #intro_div {
   width: 90%;
   margin: auto;
   padding: 20px;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.5;
 }
 
@@ -126,12 +122,6 @@ header {
   padding: 20px;
 }
 
-.header_text {
-  font-size: 36px;
-  color: #fff;
-  margin: 0;
-}
-
 nav ul {
   list-style-type: none;
   padding: 0;
@@ -153,7 +143,7 @@ nav li {
 .nav_links a {
   text-decoration: none;
   color: #fff;
-  font-size: 18px;
+  font-size: 25px;
   transition: color 0.3s;
 }
 
@@ -164,7 +154,9 @@ nav li {
 .about_div {
   width: 80%;
   padding: 20px;
-  margin: 20px;
+  margin: auto;
+  margin-bottom: 15px;
+  margin-top: 15px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -175,7 +167,7 @@ nav li {
 }
 
 .about_div p {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.5;
   margin-bottom: 10px;
 }
@@ -183,18 +175,15 @@ nav li {
 .title_container {
   width: 90%;
   height: 50px;
-  margin: 50px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 25px;
 }
 
 
 @media only screen and (max-width: 600px) {
   .header_text {
     font-size: 32px;
-  }
-
-  #intro_div p {
-    font-size: 18px;
-    padding: 20px;
   }
 
   .word_input {
