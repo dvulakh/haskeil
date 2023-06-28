@@ -185,3 +185,33 @@ nav li {
   height: 50px;
   margin: 50px;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .header_text {
+    font-size: 32px;
+  }
+
+  #intro_div p {
+    font-size: 18px;
+    padding: 20px;
+  }
+
+  .word_input {
+    font-size: 16px;
+    width: 80%;
+  }
+
+  #go_button {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+
+  #output {
+    font-size: 16px;
+  }
+
+  .footer_text {
+    font-size: 14px;
+  }
+}
