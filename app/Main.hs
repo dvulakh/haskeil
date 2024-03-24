@@ -5,10 +5,10 @@ module Main where
 --import           Search
 --import           Transformation
 
-import System.IO  
-import Hebrew (Pretty (..))
-import Search (wordToWord)
-import System.Random
+import           Hebrew                         ( Pretty(..) )
+import           Search                         ( wordToWord )
+import           System.IO
+import           System.Random
 --import Control.Monad
 {-
 main :: IO ()
@@ -27,20 +27,20 @@ main = do
 main :: IO ()
 main = do
         --let list = []
-        handle <- openFile "words/words.txt" ReadMode
-        contents <- hGetContents handle
-        let singlewords = words contents
-        let num = fst $ uniformR (1 :: Int, length singlewords :: Int) pureGen
-              where pureGen = mkStdGen 138
-        let list = generateWordList (singlewords!!num) singlewords
-        putStrLn $ singlewords!!num
-        print list
-        hClose handle
+  handle   <- openFile "words/words.txt" ReadMode
+  contents <- hGetContents handle
+  let singlewords = words contents
+  let num = fst $ uniformR (1 :: Int, length singlewords :: Int) pureGen
+        where pureGen = mkStdGen 138
+  let list = generateWordList (singlewords !! num) singlewords
+  putStrLn $ singlewords !! num
+  print list
+  hClose handle
 
 checkWords :: String -> String -> Bool
 checkWords w1 w2 = case wordToWord (prettyRead w1) (prettyRead w2) of
-                      [] -> True
-                      _  -> False
+  [] -> True
+  _  -> False
 
 generateWordList :: String -> [String] -> [String]
 generateWordList cw = filter (checkWords cw)
